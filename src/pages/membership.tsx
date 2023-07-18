@@ -1,5 +1,7 @@
 import Navbar from "@/components/Navbar";
 import { useSidebar } from "@/context/SidebarContext";
+import { ROUTES } from "@/routes";
+import { Link } from "@chakra-ui/next-js";
 import {
   Box,
   Flex,
@@ -29,14 +31,22 @@ const Membership = () => {
 
           <Text textStyle="h5">Alieshae Netlh</Text>
 
-          <Text textAlign="center" mb={4} textStyle="h2">
+          <Text textAlign="center" mt="4" textStyle="h2">
             Successful
           </Text>
 
-          <Text textStyle="p">My Current plan is $3.99 per monthly.</Text>
+          <Text textStyle="p" my="4">
+            My Current plan is $3.99 per monthly.
+          </Text>
 
-          <Box w="full">
-            <Flex mb={2} w="full" bg="brand.darkGray" p={7} borderRadius="5px">
+          <Box w="full" px="4">
+            <VStack
+              mb={2}
+              w="full"
+              bg="brand.darkGray"
+              p={7}
+              borderRadius="5px"
+            >
               <Stack>
                 <Box>
                   <Text as="span" textStyle="h1">
@@ -46,13 +56,13 @@ const Membership = () => {
                     /
                   </Text>
                   <Text as="span" textStyle="p1" fontSize="lg">
-                    Month
+                    Monthly
                   </Text>
                 </Box>
               </Stack>
-            </Flex>
-            <Flex direction="column">
-              <Text mb="9px" textStyle="p">
+            </VStack>
+            <Flex direction="column" mt="4">
+              <Text pl="4" mb="9px" textStyle="p">
                 Benefits are:
               </Text>
               <UnorderedList>
@@ -73,13 +83,17 @@ const Membership = () => {
           bg="brand.red"
         />
         <Flex p={4} mt={6} justify="space-between">
-          <Text textStyle={"p"} onClick={() => router.push("/")}>
-            Home
-          </Text>
+          <Link href={ROUTES.HOME}>
+            <Text textStyle="p" fontWeight="normal">
+              Home
+            </Text>
+          </Link>
 
-          <Text textStyle="p" fontWeight="normal">
-            Cancel Subscription?
-          </Text>
+          <Link href={ROUTES.CANCEL_SUBSCRIPTION}>
+            <Text textStyle="p" fontWeight="normal">
+              Cancel Subscription?
+            </Text>
+          </Link>
         </Flex>
       </Flex>
     </>
