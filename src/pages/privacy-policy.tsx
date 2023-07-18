@@ -17,7 +17,7 @@ const TermsConditions = () => {
     <>
       <Navbar pageName="Privacy Policy" toggleRightCollapse={toggleSidebar} />
       <Flex mt="72px" direction="column" justify="space-between" h="100vh">
-        <VStack px={4}>
+        <VStack px={8}>
           <UnorderedList spacing={4}>
             <ListItem textStyle="p">
               Perspiciatis unde omnis iste natus error.
