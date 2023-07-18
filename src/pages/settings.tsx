@@ -1,19 +1,38 @@
 import FileUpload from "@/components/FileUpload";
+import FormInputWrappper from "@/components/FormInputWrapper/FormInputWrapper";
 import Navbar from "@/components/Navbar";
 import { useSidebar } from "@/context/SidebarContext";
+import { ROUTES } from "@/routes";
+import { Link } from "@chakra-ui/next-js";
 import {
   Box,
   Button,
   Flex,
-  Image,
+  HStack,
   Input,
-  ListItem,
   Stack,
   Text,
-  UnorderedList,
-  VStack,
 } from "@chakra-ui/react";
+import { Form, Formik } from "formik";
 import { useRouter } from "next/router";
+
+import * as Yup from "yup";
+
+const settingsValidation = Yup.object().shape({
+  firstName: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Frist name is required"),
+  lastName: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Last name is required")
+    .required("Required"),
+  phone: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Phone number is required"),
+  email: Yup.string().email("Invalid email").required("Email is required"),
+});
 
 const Settings = () => {
   const router = useRouter();
@@ -21,130 +40,113 @@ const Settings = () => {
   return (
     <>
       <Navbar pageName="Settings" toggleRightCollapse={toggleSidebar} />
-      <Flex direction="column" justify="space-between" h="100vh">
-        <Flex px={4} direction="column" justify="space-between" flexGrow={1}>
-          <Stack spacing={6}>
-            <Flex align="center">
-              <FileUpload />
-              <Text ml={4} textStyle="h5">
-                Alieshae Netlh
-              </Text>
-            </Flex>
-
-            <Text textStyle="p">Welcome Alieshae Netlh!</Text>
-
-            <Stack spacing={3}>
-              {/* First Name */}
-              <Flex
-                align="center"
-                w="100%"
-                height="60px"
-                bg="brand.darkGray"
-                borderRadius={"999px"}
-                px={4}
-              >
-                <Text w="100px" mr={2} textStyle="p">
-                  First Name:
-                </Text>
-                <Input
-                  type="text"
-                  bg="transparent"
-                  outline="none"
-                  fontFamily="body"
-                  focusBorderColor="transparent"
-                  _focus={{ outline: "none" }}
-                  _active={{ outline: "none" }}
-                  _placeholder={{ fontSize: "12px" }}
-                  border="none"
-                  placeholder="Alieshae Netlh"
+      <Flex direction="column" p="4">
+        <Stack mt="72px" mb="16px">
+          <HStack>
+            <FileUpload />
+            <Text ml={4} textStyle="h5">
+              Alieshae Netlh
+            </Text>
+          </HStack>
+          <Text textStyle="p" py="4">
+            Welcome Alieshae Netlh!
+          </Text>
+        </Stack>
+        <Formik
+          initialValues={{
+            firstName: "",
+            lastName: "",
+            phone: "",
+            email: "",
+          }}
+          validationSchema={settingsValidation}
+          onSubmit={(values) => {
+            console.log(values);
+          }}
+        >
+          <Form>
+            <Stack justify="space-between" h="calc(100vh - 350px)">
+              <Stack>
+                <FormInputWrappper
+                  type="input"
+                  name="firstName"
+                  leftElement={"First Name:"}
+                  leftElementProps={{
+                    fontSize: "15px",
+                    pl: 0,
+                    w: "120px",
+                  }}
+                  inputProps={{
+                    pl: 28,
+                    placeholder: "Anshu",
+                  }}
                 />
-              </Flex>
-              {/* Address */}
-              <Flex
-                align="center"
-                w="100%"
-                height="60px"
-                bg="brand.darkGray"
-                borderRadius={"999px"}
-                px={4}
-              >
-                <Text w="100px" mr={2} textStyle="p">
-                  Address:
-                </Text>
-                <Input
-                  type="text"
-                  bg="transparent"
-                  outline="none"
-                  fontFamily="body"
-                  focusBorderColor="transparent"
-                  _focus={{ outline: "none" }}
-                  _active={{ outline: "none" }}
-                  _placeholder={{ fontSize: "12px" }}
-                  border="none"
-                  placeholder="Section 1.10.32 of de Finibus Bonorum"
+                <FormInputWrappper
+                  type="input"
+                  name="lastName"
+                  leftElement={"Last Name:"}
+                  leftElementProps={{
+                    fontSize: "15px",
+                    pl: 0,
+                    w: "120px",
+                  }}
+                  inputProps={{
+                    pl: 28,
+                    placeholder: "Raj",
+                  }}
                 />
-              </Flex>
-
-              {/* Cell Phone */}
-              <Flex
-                align="center"
-                w="100%"
-                height="60px"
-                bg="brand.darkGray"
-                borderRadius={"999px"}
-                px={4}
-              >
-                <Text w="100px" mr={2} textStyle="p">
-                  Cell Phone:
-                </Text>
-                <Input
-                  type="text"
-                  bg="transparent"
-                  outline="none"
-                  fontFamily="body"
-                  focusBorderColor="transparent"
-                  _focus={{ outline: "none" }}
-                  _active={{ outline: "none" }}
-                  _placeholder={{ fontSize: "12px" }}
-                  border="none"
-                  placeholder="(123)-456-7899"
+                <FormInputWrappper
+                  type="input"
+                  name="Phone"
+                  leftElement={"Cell Phone:"}
+                  leftElementProps={{
+                    fontSize: "15px",
+                    pl: 0,
+                    w: "120px",
+                  }}
+                  inputProps={{
+                    type: "tel",
+                    pl: 28,
+                    placeholder: "+91 7277006234",
+                  }}
                 />
-              </Flex>
-
-              {/* Email */}
-              <Flex
-                align="center"
-                w="100%"
-                height="60px"
-                bg="brand.darkGray"
-                borderRadius={"999px"}
-                px={4}
-              >
-                <Text w="100px" mr={2} textStyle="p">
-                  Your Email:
-                </Text>
-                <Input
-                  type="text"
-                  bg="transparent"
-                  outline="none"
-                  fontFamily="body"
-                  focusBorderColor="transparent"
-                  _focus={{ outline: "none" }}
-                  _active={{ outline: "none" }}
-                  _placeholder={{ fontSize: "12px" }}
-                  border="none"
-                  placeholder="info.alieshaenatlh@gmail.com"
+                <FormInputWrappper
+                  type="input"
+                  name="Phone"
+                  leftElement={"Your Email:"}
+                  leftElementProps={{
+                    fontSize: "15px",
+                    pl: 0,
+                    w: "120px",
+                  }}
+                  inputProps={{
+                    type: "email",
+                    pl: 28,
+                    placeholder: "xmodzbot@gmail.com",
+                  }}
                 />
+              </Stack>
+              <Flex w="full" justify="center">
+                <Button w="85%" h="60px" bg="brand.red">
+                  UPDATE
+                </Button>
               </Flex>
             </Stack>
-          </Stack>
+            <Flex p={4} mt={6} justify="space-between">
+              <Link href={ROUTES.HOME}>
+                <Text textStyle="p" fontWeight="normal">
+                  Home
+                </Text>
+              </Link>
 
-          <Flex w="full" justify="center">
-            <Button w="85%" h="60px" bg="brand.red">
-              UPDATE
-            </Button>
-          </Flex>
-        </Flex>
+              <Link href={ROUTES.CHANGE_PASSWORD}>
+                <Text textStyle="p" fontWeight="normal">
+                  Change Password?
+                </Text>
+              </Link>
+            </Flex>
+          </Form>
+        </Formik>
 
         <Box
           position="fixed"
@@ -154,24 +156,6 @@ const Settings = () => {
           height="5px"
           bg="brand.red"
         />
-
-        <Flex p={4} mt={6} justify="space-between">
-          <Text
-            onClick={() => router.push("/")}
-            textStyle={"p"}
-            textDecoration="underline"
-          >
-            Home
-          </Text>
-
-          <Text
-            onClick={() => router.push("/change-password")}
-            textStyle="p"
-            fontWeight="normal"
-          >
-            change Password?
-          </Text>
-        </Flex>
       </Flex>
     </>
   );

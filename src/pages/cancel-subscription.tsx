@@ -3,11 +3,9 @@ import { useSidebar } from "@/context/SidebarContext";
 import { ROUTES } from "@/routes";
 import { Link } from "@chakra-ui/next-js";
 import { Box, Button, Flex, Text, VStack } from "@chakra-ui/react";
-import { useRouter } from "next/router";
 
 const CancelSubscription = () => {
   const { toggleSidebar } = useSidebar();
-  const router = useRouter();
   return (
     <>
       <Navbar
