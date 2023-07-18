@@ -35,7 +35,6 @@ const settingsValidation = Yup.object().shape({
 });
 
 const Settings = () => {
-  const router = useRouter();
   const { toggleSidebar } = useSidebar();
   return (
     <>
@@ -97,7 +96,7 @@ const Settings = () => {
                 />
                 <FormInputWrappper
                   type="input"
-                  name="Phone"
+                  name="phone"
                   leftElement={"Cell Phone:"}
                   leftElementProps={{
                     fontSize: "15px",
@@ -112,7 +111,7 @@ const Settings = () => {
                 />
                 <FormInputWrappper
                   type="input"
-                  name="Phone"
+                  name="email"
                   leftElement={"Your Email:"}
                   leftElementProps={{
                     fontSize: "15px",
@@ -127,7 +126,7 @@ const Settings = () => {
                 />
               </Stack>
               <Flex w="full" justify="center">
-                <Button w="85%" h="60px" bg="brand.red">
+                <Button w="85%" h="60px" bg="brand.red" type="submit">
                   UPDATE
                 </Button>
               </Flex>
