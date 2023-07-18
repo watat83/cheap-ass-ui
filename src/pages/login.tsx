@@ -1,11 +1,10 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import {
   Box,
   Button,
   Flex,
   Image,
-  Input,
   Stack,
   Text,
   VStack,
@@ -13,6 +12,9 @@ import {
 import Navbar from "@/components/Navbar";
 import { useSidebar } from "@/context/SidebarContext";
 import { useRouter } from "next/router";
+import FormInputWrappper from "@/components/FormInputWrapper/FormInputWrapper";
+import { ROUTES } from "@/routes";
+import { Link } from "@chakra-ui/next-js";
 
 const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email address").required("Required"),
@@ -37,24 +39,26 @@ const Login = () => {
     <>
       <Navbar bg="none" pageName="" toggleRightCollapse={toggleSidebar} />
       <Flex direction="column" justify="space-between" minH="calc(100vh)">
-        <VStack spacing={0} px={4}>
-          <Image
-            mt={"40px"}
-            height="150px"
-            width="150px"
-            borderRadius={"50%"}
-            src="/assets/images/Donkey_Cartoon_Mascot.jpg"
-            mb="40px"
-          />
+        <Stack spacing={0} px={4}>
+          <VStack>
+            <Image
+              mt={"40px"}
+              height="150px"
+              width="150px"
+              borderRadius={"50%"}
+              src="/assets/images/Donkey_Cartoon_Mascot.jpg"
+              mb="40px"
+            />
 
-          <Flex mb="48px" direction="column">
-            <Text textAlign="center" mb={4} textStyle="h2">
-              Welcome Back!
-            </Text>
-            <Text textAlign="center" textStyle="p">
-              Please login to your account
-            </Text>
-          </Flex>
+            <Flex mb="48px" direction="column">
+              <Text textAlign="center" mb={4} textStyle="h2">
+                Welcome Back!
+              </Text>
+              <Text textAlign="center" textStyle="p">
+                Please login to your account
+              </Text>
+            </Flex>
+          </VStack>
 
           <Formik
             initialValues={initialValues}
@@ -64,57 +68,41 @@ const Login = () => {
             {({ isSubmitting }) => (
               <Form>
                 <Stack spacing={5}>
-                  {/* Email */}
-                  <Flex
-                    align="center"
-                    w="100%"
-                    height="60px"
-                    bg="brand.darkGray"
-                    borderRadius={"999px"}
-                    px={4}
-                  >
-                    <Text w="100px" mr={2} textStyle="p">
-                      Email
-                    </Text>
-                    <Field
-                      type="email"
-                      name="email"
-                      as={Input}
-                      variant="compound"
-                      placeholder="info.john@gmail.com"
-                    />
-                  </Flex>
-                  <ErrorMessage name="email" component={Text} color="red.500" />
-
-                  {/* Password */}
-                  <Flex
-                    align="center"
-                    w="100%"
-                    height="60px"
-                    bg="brand.darkGray"
-                    borderRadius="full"
-                    px={4}
-                  >
-                    <Text w="100px" mr={2} textStyle="p">
-                      Password
-                    </Text>
-                    <Field
-                      type="password"
-                      name="password"
-                      as={Input}
-                      variant="compound"
-                      placeholder="*********************"
-                    />
-
-                    <Text textDecoration="underline" mr={2} textStyle="p">
-                      Forgot?
-                    </Text>
-                  </Flex>
-                  <ErrorMessage
-                    name="password"
-                    component={Text}
-                    color="red.500"
+                  <FormInputWrappper
+                    type="input"
+                    name="email"
+                    leftElement={"Email"}
+                    leftElementProps={{
+                      fontSize: "15px",
+                      pl: 4,
+                      w: "120px",
+                      display: "flex",
+                      justifyContent: "start",
+                    }}
+                    inputProps={{
+                      pl: 24,
+                      placeholder: "*************",
+                    }}
                   />
+                  <FormInputWrappper
+                    type="input"
+                    name="email"
+                    leftElement={"Password"}
+                    leftElementProps={{
+                      fontSize: "15px",
+                      pl: 0,
+                      w: "100px",
+                    }}
+                    inputProps={{
+                      pl: 24,
+                      placeholder: "*************",
+                    }}
+                  />
+                  <Flex justify="end">
+                    <Link href={ROUTES.FORGOT_PASSWORD}>
+                      <Text textStyle="p">Forgot Password?</Text>
+                    </Link>
+                  </Flex>
 
                   <Flex w="full" justify="center">
                     <Button
@@ -130,15 +118,17 @@ const Login = () => {
 
                   <Text textAlign="center" textStyle="p" fontWeight="normal">
                     Don't have an account?{" "}
-                    <Text as="span" color="brand.red">
-                      Register Now
-                    </Text>
+                    <Link href={ROUTES.REGISTER}>
+                      <Text as="span" color="brand.red">
+                        Register Now
+                      </Text>
+                    </Link>
                   </Text>
                 </Stack>
               </Form>
             )}
           </Formik>
-        </VStack>
+        </Stack>
 
         <Box position="relative" h="5px" bg="brand.red">
           <Box position="absolute" bottom="0" left="0">
