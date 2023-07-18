@@ -1,0 +1,45 @@
+<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Listing" clip-path="url(#clip0_13_514)">
+<g id="g1458">
+<g id="g1460">
+<path id="path1462" d="M12.5937 19.2969H11.1719" stroke="#E2E2E2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="g1464">
+<path id="path1466" d="M19.9062 12.8477H11.1719" stroke="#E2E2E2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="g1468">
+<path id="path1470" d="M19.9062 6.75391H11.1719" stroke="#E2E2E2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="g1472">
+<path id="path1474" d="M7.10937 19.2969H6.09375" stroke="#E2E2E2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="g1476">
+<path id="path1478" d="M7.10937 12.8477H6.09375" stroke="#E2E2E2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="g1480">
+<path id="path1482" d="M7.10937 6.75391H6.09375" stroke="#E2E2E2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="g1484">
+<g id="Clip path group">
+<mask id="mask0_13_514" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="26" height="26">
+<g id="clipPath1490">
+<path id="path1488" d="M0 3.8147e-06H26V26H0V3.8147e-06Z" fill="white"/>
+</g>
+</mask>
+<g mask="url(#mask0_13_514)">
+<g id="g1486">
+<g id="g1500">
+<path id="path1502" d="M24.9844 24.9844H4.0625C2.37976 24.9844 1.01562 23.6202 1.01562 21.9375V4.0625C1.01562 2.37976 2.37976 1.01563 4.0625 1.01563H21.9375C23.6202 1.01563 24.9844 2.37976 24.9844 4.0625V14.1172" stroke="#E2E2E2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_13_514">
+<rect width="26" height="26" fill="white"/>
+</clipPath>
+</defs>
+</svg>
