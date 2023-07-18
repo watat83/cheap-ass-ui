@@ -73,8 +73,6 @@ const Login = () => {
                     name="email"
                     leftElement={"Email"}
                     leftElementProps={{
-                      fontSize: "15px",
-                      pl: 4,
                       w: "120px",
                       display: "flex",
                       justifyContent: "start",

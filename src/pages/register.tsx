@@ -1,12 +1,12 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, FieldProps } from "formik";
 import * as Yup from "yup";
 import {
   Box,
   Button,
   Checkbox,
   Flex,
+  FormControl,
   Image,
-  Input,
   Stack,
   Text,
   VStack,
@@ -14,16 +14,31 @@ import {
 import Navbar from "@/components/Navbar";
 import { useSidebar } from "@/context/SidebarContext";
 import { useRouter } from "next/router";
+import FormInputWrappper from "@/components/FormInputWrapper/FormInputWrapper";
 
 const validationSchema = Yup.object({
-  firstName: Yup.string().required("Required"),
-  lastName: Yup.string().required("Required"),
-  cellPhone: Yup.string().required("Required"),
-  email: Yup.string().email("Invalid email address").required("Required"),
-  password: Yup.string().required("Required"),
+  firstName: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Frist name is required"),
+  lastName: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Last name is required")
+    .required("Required"),
+  phone: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Phone number is required"),
+  email: Yup.string().email("Invalid email").required("Email is required"),
+
+  password: Yup.string()
+    .min(8, "Password must be at least 8 characters")
+    .required("Password is required"),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password")], "Passwords must match")
-    .required("Required"),
+    .required("Confirm Password is required"),
+
+  terms: Yup.boolean().oneOf([true], "Accept Terms & Conditions is required"),
 });
 
 const Register = () => {
@@ -60,176 +75,120 @@ const Register = () => {
             initialValues={{
               firstName: "",
               lastName: "",
-              cellPhone: "",
+              phone: "",
               email: "",
               password: "",
               confirmPassword: "",
+              terms: false,
             }}
             validationSchema={validationSchema}
             onSubmit={handleSubmit}
           >
             {({ isSubmitting }) => (
               <Form>
-                <Stack spacing={5}>
-                  {/* First Name */}
-                  <Flex
-                    align="center"
-                    w="100%"
-                    height="60px"
-                    bg="brand.darkGray"
-                    borderRadius={"999px"}
-                    px={4}
-                  >
-                    <Text w="100px" mr={2} textStyle="p1">
-                      First Name
-                    </Text>
-                    <Field
-                      type="text"
+                <Stack>
+                  <Stack spacing={4}>
+                    <FormInputWrappper
+                      type="input"
                       name="firstName"
-                      as={Input}
-                      variant="compound"
-                      placeholder=""
+                      leftElement={"First Name:"}
+                      leftElementProps={{
+                        w: "100px",
+                      }}
+                      inputProps={{
+                        pl: 28,
+                        placeholder: "Anshu",
+                      }}
                     />
-                  </Flex>
-                  <ErrorMessage
-                    name="firstName"
-                    component={Text}
-                    color="red.500"
-                  />
-
-                  {/* Last Name */}
-                  <Flex
-                    align="center"
-                    w="100%"
-                    height="60px"
-                    bg="brand.darkGray"
-                    borderRadius={"999px"}
-                    px={4}
-                  >
-                    <Text w="100px" mr={2} textStyle="p1">
-                      Last Name
-                    </Text>
-                    <Field
-                      type="text"
+                    <FormInputWrappper
+                      type="input"
                       name="lastName"
-                      as={Input}
-                      variant="compound"
-                      placeholder=""
+                      leftElement={"Last Name:"}
+                      leftElementProps={{
+                        w: "120px",
+                      }}
+                      inputProps={{
+                        pl: 28,
+                        placeholder: "Raj",
+                      }}
                     />
-                  </Flex>
-                  <ErrorMessage
-                    name="lastName"
-                    component={Text}
-                    color="red.500"
-                  />
-
-                  {/* Cell Phone */}
-                  <Flex
-                    align="center"
-                    w="100%"
-                    height="60px"
-                    bg="brand.darkGray"
-                    borderRadius={"999px"}
-                    px={4}
-                  >
-                    <Text w="100px" mr={2} textStyle="p1">
-                      Cell Phone
-                    </Text>
-                    <Field
-                      type="text"
-                      name="cellPhone"
-                      as={Input}
-                      variant="compound"
-                      placeholder="#"
+                    <FormInputWrappper
+                      type="input"
+                      name="phone"
+                      leftElement={"Cell Phone:"}
+                      leftElementProps={{
+                        w: "120px",
+                      }}
+                      inputProps={{
+                        type: "tel",
+                        pl: 28,
+                        placeholder: "+91 7277006234",
+                      }}
                     />
-                  </Flex>
-                  <ErrorMessage
-                    name="cellPhone"
-                    component={Text}
-                    color="red.500"
-                  />
-
-                  {/* Email */}
-                  <Flex
-                    align="center"
-                    w="100%"
-                    height="60px"
-                    bg="brand.darkGray"
-                    borderRadius={"999px"}
-                    px={4}
-                  >
-                    <Text w="100px" mr={2} textStyle="p1">
-                      Email
-                    </Text>
-                    <Field
-                      type="text"
+                    <FormInputWrappper
+                      type="input"
                       name="email"
-                      as={Input}
-                      variant="compound"
-                      placeholder="info.john@gmail.com"
+                      leftElement={"Your Email:"}
+                      leftElementProps={{
+                        w: "120px",
+                      }}
+                      inputProps={{
+                        type: "email",
+                        pl: 28,
+                        placeholder: "xmodzbot@gmail.com",
+                      }}
                     />
-                  </Flex>
-                  <ErrorMessage name="email" component={Text} color="red.500" />
-
-                  {/* Password */}
-                  <Flex
-                    align="center"
-                    w="100%"
-                    height="60px"
-                    bg="brand.darkGray"
-                    borderRadius={"999px"}
-                    px={4}
-                  >
-                    <Text w="100px" mr={2} textStyle="p1">
-                      Password
-                    </Text>
-                    <Field
-                      type="password"
+                    <FormInputWrappper
+                      type="input"
                       name="password"
-                      as={Input}
-                      variant="compound"
-                      placeholder="*********************"
+                      leftElement={"New Password:"}
+                      leftElementProps={{
+                        w: "120px",
+                      }}
+                      inputProps={{
+                        pl: 32,
+                        placeholder: "*************",
+                      }}
                     />
-                  </Flex>
-                  <ErrorMessage
-                    name="password"
-                    component={Text}
-                    color="red.500"
-                  />
-
-                  {/* Confirm Password */}
-                  <Flex
-                    align="center"
-                    w="100%"
-                    height="60px"
-                    bg="brand.darkGray"
-                    borderRadius={"999px"}
-                    px={4}
-                  >
-                    <Text w="180px" mr={2} textStyle="p1">
-                      Confirm Password
-                    </Text>
-                    <Field
-                      type="password"
+                    <FormInputWrappper
+                      type="input"
                       name="confirmPassword"
-                      as={Input}
-                      variant="compound"
-                      placeholder="*********************"
+                      leftElement={"Confirm Password:"}
+                      leftElementProps={{
+                        w: "150px",
+                      }}
+                      inputProps={{
+                        type: "password",
+                        pl: 36,
+                        placeholder: "*************",
+                      }}
                     />
-                  </Flex>
-                  <ErrorMessage
-                    name="confirmPassword"
-                    component={Text}
-                    color="red.500"
-                  />
+                  </Stack>
 
                   <Flex w="full" justify="center">
                     <Box w="80%">
-                      <Checkbox size="sm">
-                        <Text as="span" textStyle="p2">
-                          Agree to our Terms & Conditions and Privacy Policy
-                        </Text>
-                      </Checkbox>
+                      <Field name="terms">
+                        {({ meta, field }: FieldProps) => (
+                          <FormControl
+                            isInvalid={!!(meta.error && meta.touched)}
+                          >
+                            <Checkbox size="sm" {...field}>
+                              <Text
+                                as="span"
+                                textStyle="p2"
+                                color={
+                                  meta.error && meta.touched
+                                    ? "red.400"
+                                    : "brand.gray"
+                                }
+                              >
+                                Agree to our Terms & Conditions and Privacy
+                                Policy
+                              </Text>
+                            </Checkbox>
+                          </FormControl>
+                        )}
+                      </Field>
                     </Box>
                   </Flex>
 

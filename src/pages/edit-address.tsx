@@ -140,9 +140,9 @@ const EditAddress = () => {
                   name="address"
                   leftElement={"Address"}
                   leftElementProps={{
-                    fontSize: "15px",
                     fontWeight: "semibold",
                     pl: 10,
+                    fontSize: "15px",
                   }}
                   inputProps={{
                     pl: 24,

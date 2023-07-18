@@ -71,12 +71,10 @@ const Settings = () => {
                   name="firstName"
                   leftElement={"First Name:"}
                   leftElementProps={{
-                    fontSize: "15px",
-                    pl: 0,
-                    w: "120px",
+                    w: "100px",
                   }}
                   inputProps={{
-                    pl: 28,
+                    pl: 24,
                     placeholder: "Anshu",
                   }}
                 />
@@ -85,12 +83,10 @@ const Settings = () => {
                   name="lastName"
                   leftElement={"Last Name:"}
                   leftElementProps={{
-                    fontSize: "15px",
-                    pl: 0,
-                    w: "120px",
+                    w: "100px",
                   }}
                   inputProps={{
-                    pl: 28,
+                    pl: 24,
                     placeholder: "Raj",
                   }}
                 />
@@ -99,13 +95,11 @@ const Settings = () => {
                   name="phone"
                   leftElement={"Cell Phone:"}
                   leftElementProps={{
-                    fontSize: "15px",
-                    pl: 0,
-                    w: "120px",
+                    w: "100px",
                   }}
                   inputProps={{
                     type: "tel",
-                    pl: 28,
+                    pl: 24,
                     placeholder: "+91 7277006234",
                   }}
                 />
@@ -114,13 +108,11 @@ const Settings = () => {
                   name="email"
                   leftElement={"Your Email:"}
                   leftElementProps={{
-                    fontSize: "15px",
-                    pl: 0,
-                    w: "120px",
+                    w: "100px",
                   }}
                   inputProps={{
                     type: "email",
-                    pl: 28,
+                    pl: 24,
                     placeholder: "xmodzbot@gmail.com",
                   }}
                 />

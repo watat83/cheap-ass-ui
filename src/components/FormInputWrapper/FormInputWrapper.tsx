@@ -62,9 +62,12 @@ const FormInputWrappper: FC<IFormInputWrappperProps> = (props) => {
                 <InputLeftElement
                   pointerEvents="none"
                   color="white"
-                  fontSize="20px"
+                  fontSize="12px"
                   fontWeight="light"
+                  display="flex"
+                  justifyContent="start"
                   {...leftElementProps}
+                  pl="4"
                 >
                   {leftElement}
                 </InputLeftElement>

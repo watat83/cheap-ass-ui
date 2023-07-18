@@ -52,8 +52,6 @@ const ChangePassword = () => {
                   name="oldPassword"
                   leftElement={"Old Password:"}
                   leftElementProps={{
-                    fontSize: "15px",
-                    pl: 0,
                     w: "120px",
                   }}
                   inputProps={{
@@ -66,8 +64,6 @@ const ChangePassword = () => {
                   name="newPassword"
                   leftElement={"New Password:"}
                   leftElementProps={{
-                    fontSize: "15px",
-                    pl: 0,
                     w: "120px",
                   }}
                   inputProps={{
@@ -80,8 +76,6 @@ const ChangePassword = () => {
                   name="confirmPassword"
                   leftElement={"Confirm Password:"}
                   leftElementProps={{
-                    fontSize: "15px",
-                    pl: 0,
                     w: "150px",
                   }}
                   inputProps={{
