@@ -75,7 +75,7 @@ const Settings = () => {
                   }}
                   inputProps={{
                     pl: 24,
-                    placeholder: "Anshu",
+                    placeholder: "john",
                   }}
                 />
                 <FormInputWrappper
@@ -87,7 +87,7 @@ const Settings = () => {
                   }}
                   inputProps={{
                     pl: 24,
-                    placeholder: "Raj",
+                    placeholder: "doe",
                   }}
                 />
                 <FormInputWrappper
@@ -100,7 +100,7 @@ const Settings = () => {
                   inputProps={{
                     type: "tel",
                     pl: 24,
-                    placeholder: "+91 7277006234",
+                    placeholder: "+123456789",
                   }}
                 />
                 <FormInputWrappper
@@ -113,7 +113,7 @@ const Settings = () => {
                   inputProps={{
                     type: "email",
                     pl: 24,
-                    placeholder: "xmodzbot@gmail.com",
+                    placeholder: "johndoe@gmail.com",
                   }}
                 />
               </Stack>

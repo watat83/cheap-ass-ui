@@ -97,7 +97,7 @@ const Register = () => {
                       }}
                       inputProps={{
                         pl: 28,
-                        placeholder: "Anshu",
+                        placeholder: "John",
                       }}
                     />
                     <FormInputWrappper
@@ -109,7 +109,7 @@ const Register = () => {
                       }}
                       inputProps={{
                         pl: 28,
-                        placeholder: "Raj",
+                        placeholder: "Doe",
                       }}
                     />
                     <FormInputWrappper
@@ -122,7 +122,7 @@ const Register = () => {
                       inputProps={{
                         type: "tel",
                         pl: 28,
-                        placeholder: "+91 7277006234",
+                        placeholder: "+123456789",
                       }}
                     />
                     <FormInputWrappper
@@ -135,7 +135,7 @@ const Register = () => {
                       inputProps={{
                         type: "email",
                         pl: 28,
-                        placeholder: "xmodzbot@gmail.com",
+                        placeholder: "johndoe@gmail.com",
                       }}
                     />
                     <FormInputWrappper
