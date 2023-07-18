@@ -1,4 +1,4 @@
-import BackgroundLayout from "@/components/BackgroundLayout/BackgroundLayout";
+import BackgroundLayout from "@/components/Layout/BackgroundLayout/BackgroundLayout";
 import { Grid, Image, VStack } from "@chakra-ui/react";
 
 const Splash = () => {

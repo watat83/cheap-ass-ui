@@ -6,7 +6,7 @@ export const ROUTES = {
   HOME: "/",
   LOGIN: "/login",
   MEMBERSHIP: "/membership",
-  MY_LISTINGS: "/my-listings",
+  MY_LISTINGS: "/my-listing",
   PAYMENT: "/payment",
   POST_ADDRESS: "/post-address",
   PRIVACY_POLICY: "/privacy-policy",
