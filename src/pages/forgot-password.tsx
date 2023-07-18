@@ -1,5 +1,8 @@
+import FormInputWrappper from "@/components/FormInputWrapper/FormInputWrapper";
 import Navbar from "@/components/Navbar";
 import { useSidebar } from "@/context/SidebarContext";
+import { ROUTES } from "@/routes";
+import { Link } from "@chakra-ui/next-js";
 import {
   Box,
   Button,
@@ -10,7 +13,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import { useRouter } from "next/router";
 import * as Yup from "yup";
 
@@ -31,23 +34,25 @@ const ForgotPassword = () => {
     <>
       <Navbar bg="none" pageName="" toggleRightCollapse={toggleSidebar} />
       <Flex direction="column" justify="space-between" h="100vh">
-        <VStack px={4}>
-          <Image
-            mt={"20px"}
-            boxSize="150px"
-            borderRadius="50%"
-            src="/assets/images/Donkey_Cartoon_Mascot.jpg"
-          />
+        <Stack px={4}>
+          <VStack>
+            <Image
+              mt={"20px"}
+              boxSize="150px"
+              borderRadius="50%"
+              src="/assets/images/Donkey_Cartoon_Mascot.jpg"
+            />
 
-          <Flex direction="column">
-            <Text textAlign="center" mb={4} textStyle="h2">
-              Forgot Password
-            </Text>
-            <Text textAlign="center" textStyle="p">
-              Please enter the email address associated with your account. We
-              will email you a link to reset your password.
-            </Text>
-          </Flex>
+            <Flex direction="column">
+              <Text textAlign="center" my={8} textStyle="h2">
+                Forgot Password
+              </Text>
+              <Text textAlign="center" textStyle="p" maxW="280px" mb="8">
+                Please enter the email address associated with your account. We
+                will email you a link to reset your password.
+              </Text>
+            </Flex>
+          </VStack>
 
           <Formik
             initialValues={{
@@ -59,27 +64,20 @@ const ForgotPassword = () => {
             {({ isSubmitting }) => (
               <Form>
                 <Stack spacing={5}>
-                  {/* Email */}
-                  <Flex
-                    align="center"
-                    w="100%"
-                    height="60px"
-                    bg="brand.darkGray"
-                    borderRadius="full"
-                    px={4}
-                  >
-                    <Text w="100px" mr={2} textStyle="p">
-                      Enter Email
-                    </Text>
-                    <Field
-                      type="text"
-                      name="email"
-                      as={Input}
-                      variant="compound"
-                      placeholder=""
-                    />
-                  </Flex>
-                  <ErrorMessage name="email" component={Text} color="red.500" />
+                  <FormInputWrappper
+                    type="input"
+                    name="email"
+                    leftElement={"Enter Email"}
+                    leftElementProps={{
+                      w: "120px",
+                      display: "flex",
+                      justifyContent: "start",
+                    }}
+                    inputProps={{
+                      pl: 24,
+                      placeholder: "Test@gmail.com",
+                    }}
+                  />
 
                   <Flex w="full" justify="center">
                     <Button
@@ -96,7 +94,7 @@ const ForgotPassword = () => {
               </Form>
             )}
           </Formik>
-        </VStack>
+        </Stack>
 
         <Box
           position="fixed"
@@ -108,16 +106,11 @@ const ForgotPassword = () => {
         />
         <Box position="relative">
           <Image src="/assets/images/map.png" />
-          <Text
-            onClick={() => router.push("/")}
-            textStyle={"p"}
-            textDecoration={"underline"}
-            position="absolute"
-            bottom={5}
-            left={5}
-          >
-            Home
-          </Text>
+          <Link href={ROUTES.HOME}>
+            <Text textStyle={"p"} position="absolute" bottom={5} left={5}>
+              Home
+            </Text>
+          </Link>
         </Box>
       </Flex>
     </>

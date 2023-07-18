@@ -79,7 +79,7 @@ const Login = () => {
                     }}
                     inputProps={{
                       pl: 24,
-                      placeholder: "*************",
+                      placeholder: "Test@gmail.com",
                     }}
                   />
                   <FormInputWrappper
@@ -131,16 +131,11 @@ const Login = () => {
         <Box position="relative" h="5px" bg="brand.red">
           <Box position="absolute" bottom="0" left="0">
             <Image src="/assets/images/map.png" />
-            <Text
-              textStyle="p"
-              textDecoration="underline"
-              position="absolute"
-              bottom="5"
-              left="5"
-              onClick={() => router.push("/")}
-            >
-              Home
-            </Text>
+            <Link href={ROUTES.HOME}>
+              <Text textStyle="p" position="absolute" bottom="5" left="5">
+                Home
+              </Text>
+            </Link>
           </Box>
         </Box>
       </Flex>
