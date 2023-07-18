@@ -15,7 +15,6 @@ import {
 import { useRouter } from "next/router";
 
 const Membership = () => {
-  const router = useRouter();
   const { toggleSidebar } = useSidebar();
   return (
     <>

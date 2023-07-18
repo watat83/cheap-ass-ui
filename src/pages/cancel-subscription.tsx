@@ -1,5 +1,7 @@
 import Navbar from "@/components/Navbar";
 import { useSidebar } from "@/context/SidebarContext";
+import { ROUTES } from "@/routes";
+import { Link } from "@chakra-ui/next-js";
 import { Box, Button, Flex, Text, VStack } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
@@ -13,7 +15,7 @@ const CancelSubscription = () => {
         toggleRightCollapse={toggleSidebar}
       />
 
-      <Flex direction="column" minHeight="100vh" mt="72px">
+      <Flex direction="column" minHeight="100vh" mt="10">
         <VStack px={4} py={8} spacing={5} align="center">
           <Text w="85%" textStyle="p" textAlign="center">
             Please enter the email address associated with your account. We will
@@ -30,7 +32,7 @@ const CancelSubscription = () => {
             doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
           </Text>
 
-          <Flex w="full" justify="center">
+          <Flex w="full" justify="center" mt="4">
             <Button w="85%" h="60px" bg="brand.red">
               SEND REQUEST
             </Button>
@@ -48,13 +50,9 @@ const CancelSubscription = () => {
         />
 
         <Box position="fixed" bottom="15px" left="15px">
-          <Text
-            textStyle={"p"}
-            textDecoration={"underline"}
-            onClick={() => router.push("/home")}
-          >
-            Home
-          </Text>
+          <Link href={ROUTES.HOME}>
+            <Text textStyle={"p"}>Home</Text>
+          </Link>
         </Box>
       </Flex>
     </>

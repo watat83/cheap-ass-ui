@@ -11,8 +11,9 @@ const baseStyle = {
 const variants = {
   primary: {
     px: "35px",
-    fontSize: "13px",
+    fontSize: "16px",
     color: "white",
+    textTransform: "uppercase",
     _focus: {},
   },
 };
