@@ -1,8 +1,14 @@
 {
-  "extends": "../../tsconfig.json", // Extend the config options from the root,
+  // Extend the config options from the root,
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "strictBindCallApply": true,
+    "noFallthroughCasesInSwitch": true,
     "allowJs": true,
     "strict": true,
     "noEmit": true,
@@ -20,7 +26,10 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

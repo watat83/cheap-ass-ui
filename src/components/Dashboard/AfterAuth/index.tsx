@@ -1,20 +1,42 @@
 import Navbar from "@/components/Navbar";
 import { useSidebar } from "@/context/SidebarContext";
+import { ROUTES } from "@/routes";
 import {
   Box,
   Button,
   Divider,
   Flex,
+  Icon,
   Input,
   InputGroup,
   InputLeftElement,
   Stack,
   Text,
 } from "@chakra-ui/react";
+import Link from "next/link";
 import { BsSearch } from "react-icons/bs";
 
 const AfterAuth = () => {
   const { toggleSidebar } = useSidebar();
+
+  const resultItems = [
+    {
+      topText: "11-15-22 (Domino's Pizza)",
+      middleText: "Tip $0",
+      bottomText: "Notes -  7 large pizzas and a 2 liter.. Cheap",
+    },
+    {
+      topText: "12-16-23 (Spark)",
+      middleText: "Tip Bait $17 $0",
+      bottomText: "Notes -  Customer straight up pulled the tip.",
+    },
+    {
+      topText: "1-27-23 (Door Dash)",
+      middleText: "Food never arrived",
+      bottomText: "Notes -  Handed to customer. Lied!",
+    },
+  ];
+
   return (
     <>
       <Navbar pageName="" toggleRightCollapse={toggleSidebar} />
@@ -24,10 +46,10 @@ const AfterAuth = () => {
 
           <Box>
             <InputGroup>
-              <InputLeftElement pointerEvents="none">
-                <BsSearch />
+              <InputLeftElement w="16" pointerEvents="none" h="60px">
+                <Icon as={BsSearch} boxSize="4" />
               </InputLeftElement>
-              <Input variant="filled" size="md" placeholder="Search" />
+              <Input size="md" placeholder="Search" pl="14" h="60px" />
             </InputGroup>
             <Text mt={3} textAlign="center" textStyle="p">
               Search by Address (123 Main St, O'Fallon Mo)
@@ -40,21 +62,14 @@ const AfterAuth = () => {
             </Text>
             <Divider mb={3} />
 
-            <ResultItem
-              topText="11-15-22 (Domino's Pizza)"
-              middleText="Tip $0"
-              bottomText="Notes -  7 large pizzas and a 2 liter.. Cheap"
-            />
-            <ResultItem
-              topText="12-16-23 (Spark)"
-              middleText="Tip Bait $17 $0"
-              bottomText="Notes -  Customer straight up pulled the tip."
-            />
-            <ResultItem
-              topText="1-27-23 (Door Dash)"
-              middleText="Food never arrived"
-              bottomText="Notes -  Handed to customer. Lied!"
-            />
+            {resultItems.map((item) => (
+              <ResultItem
+                key={item.topText}
+                topText={item.topText}
+                middleText={item.middleText}
+                bottomText={item.bottomText}
+              />
+            ))}
           </Flex>
         </Stack>
 
@@ -69,12 +84,16 @@ const AfterAuth = () => {
           px={10}
           bg="brand.darkGray"
         >
-          <Button size="sm" bg="brand.red">
-            EDIT
-          </Button>
-          <Button size="sm" bg="brand.red">
-            POST
-          </Button>
+          <Link href={ROUTES.MY_LISTINGS}>
+            <Button size="sm" bg="brand.red">
+              EDIT
+            </Button>
+          </Link>
+          <Link href={ROUTES.POST_ADDRESS}>
+            <Button size="sm" bg="brand.red">
+              POST
+            </Button>
+          </Link>
         </Flex>
       </Flex>
     </>

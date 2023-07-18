@@ -9,11 +9,18 @@ const variants = {
         outline: "none",
         fontFamily: "body",
         focusBorderColor: "transparent",
-        _focus: { outline: "none", bg: "brand.darkGray" },
+        _focus: {
+          outline: "none",
+          bg: "brand.darkGray",
+          border: "1px solid ",
+          borderColor: "brand.red",
+        },
         _active: { outline: "none", bg: "brand.darkGray" },
-        _placeholder: { fontSize: "12px" },
+        _hover: { bg: "brand.darkGray" },
+        _placeholder: { fontSize: "15px" },
         border: "none",
-
+        h: "60px",
+        fontSize: "15px",
         _invalid: {
           borderColor: "red.400",
         },
@@ -56,6 +63,7 @@ const input = {
   sizes,
   defaultProps: {
     colorScheme: "gray",
+    variant: "filled",
   },
 };
 

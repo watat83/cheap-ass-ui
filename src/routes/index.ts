@@ -1,0 +1,17 @@
+export const ROUTES = {
+  CANCEL_SUBSCRIPTION: "/cancel-subscription",
+  CHANGE_PASSWORD: "/change-password",
+  EDIT_ADDRESS: "/edit-address",
+  FORGOT_PASSWORD: "/forgot-password",
+  HOME: "/",
+  LOGIN: "/login",
+  MEMBERSHIP: "/membership",
+  MY_LISTINGS: "/my-listing",
+  PAYMENT: "/payment",
+  POST_ADDRESS: "/post-address",
+  PRIVACY_POLICY: "/privacy-policy",
+  REGISTER: "/register",
+  SETTINGS: "/settings",
+  SPLASH: "/splash",
+  TERMS_CONDITIONS: "/terms-conditions",
+};

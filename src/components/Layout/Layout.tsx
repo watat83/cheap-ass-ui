@@ -1,9 +1,9 @@
 import Navbar from "@/components/Navbar";
 
 import { Flex, useDisclosure } from "@chakra-ui/react";
-import Sidebar from "./Sidebar";
 import { useContext } from "react";
 import { useSidebar } from "@/context/SidebarContext";
+import Sidebar from "../Sidebar";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();

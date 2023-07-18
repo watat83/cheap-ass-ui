@@ -1,4 +1,4 @@
-import { Avatar, AvatarBadge, Stack } from "@chakra-ui/react";
+import { Avatar, AvatarBadge, Icon, Stack } from "@chakra-ui/react";
 import { useFileUpload } from "use-file-upload";
 import { BsFillPencilFill } from "react-icons/bs";
 
@@ -15,7 +15,7 @@ const FileUpload = () => {
 
   return (
     <Stack direction="row" spacing={4}>
-      <Avatar size="lg" src={defaultSrc}>
+      <Avatar size="xl" src={defaultSrc} name="Anshu Raj">
         <AvatarBadge
           onClick={() =>
             selectFiles(
@@ -25,9 +25,11 @@ const FileUpload = () => {
           }
           borderColor="brand.dark"
           bg="brand.dark"
-          boxSize="1.24rem"
+          boxSize="2rem"
+          pos="absolute"
+          bottom="4"
         >
-          <BsFillPencilFill />
+          <Icon color="white" as={BsFillPencilFill} fontSize="xs" boxSize="4" />
         </AvatarBadge>
       </Avatar>
     </Stack>

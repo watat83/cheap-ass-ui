@@ -20,7 +20,7 @@ const TermsConditions = () => {
         toggleRightCollapse={toggleSidebar}
       />
       <Flex mt="72px" direction="column" justify="space-between" h="100vh">
-        <VStack px={4}>
+        <VStack px={8}>
           <UnorderedList spacing={4}>
             <ListItem textStyle="p">
               Dut perspiciatis unde omnis iste natus error sit voluptatem
