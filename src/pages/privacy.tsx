@@ -12,7 +12,7 @@ const TermsConditions = () => {
       <Navbar pageName="Privacy Policy" toggleRightCollapse={toggleSidebar} />
       <Flex
         p="4"
-        mt="32px"
+        mt="48px"
         direction="column"
         justify="space-between"
         h="100vh"
@@ -37,11 +37,11 @@ const TermsConditions = () => {
               fontSize: "14px",
             },
             ul: {
-              pl: "2",
+              pl: "4",
               fontSize: "14px",
             },
             ol: {
-              pl: "2",
+              pl: "4",
               fontSize: "14px",
               li: {
                 a: {
