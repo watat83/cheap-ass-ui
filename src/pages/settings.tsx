@@ -1,4 +1,5 @@
 import FileUpload from "@/components/FileUpload";
+import FormCheckbox from "@/components/FormCheckbox/FormCheckbox";
 import FormInputWrappper from "@/components/FormInputWrapper/FormInputWrapper";
 import Navbar from "@/components/Navbar";
 import { useSidebar } from "@/context/SidebarContext";
@@ -7,14 +8,18 @@ import { Link } from "@chakra-ui/next-js";
 import {
   Box,
   Button,
+  Checkbox,
+  CheckboxGroup,
   Flex,
+  FormControl,
+  Grid,
   HStack,
   Input,
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { Form, Formik } from "formik";
-import { useRouter } from "next/router";
+import { Field, FieldProps, Form, Formik } from "formik";
+import { useState } from "react";
 
 import * as Yup from "yup";
 
@@ -35,11 +40,63 @@ const settingsValidation = Yup.object().shape({
 });
 
 const Settings = () => {
+  const [checkedItems, setCheckedItems] = useState([false, false]);
+
+  const allChecked = checkedItems.every(Boolean);
+  const isIndeterminate = checkedItems.some(Boolean) && !allChecked;
   const { toggleSidebar } = useSidebar();
+
+  const checkboxOptions = [
+    {
+      value: "dominos",
+      label: "Domino's",
+    },
+    {
+      value: "Gopuff",
+      label: "Gopuff",
+    },
+    {
+      value: "Grubhub",
+      label: "Grubhub",
+    },
+    {
+      value: "Instacart",
+      label: "Instacart",
+    },
+    {
+      value: "papa-johns",
+      label: "Papa John's",
+    },
+    {
+      value: "pizza-hut",
+      label: "Pizza Hut",
+    },
+    {
+      value: "Roadie",
+      label: "Roadie",
+    },
+    {
+      value: "Roadie",
+      label: "Roadie",
+    },
+    {
+      value: "Shipt",
+      label: "Shipt",
+    },
+    {
+      value: "Spark",
+      label: "Spark",
+    },
+    {
+      value: "uber",
+      label: "Uber",
+    },
+  ];
+
   return (
     <>
       <Navbar pageName="Settings" toggleRightCollapse={toggleSidebar} />
-      <Flex direction="column" p="4">
+      <Flex direction="column" p="4" mb="16">
         <Stack mt="72px" mb="16px">
           <HStack>
             <FileUpload />
@@ -57,6 +114,7 @@ const Settings = () => {
             lastName: "",
             phone: "",
             email: "",
+            platforms: [],
           }}
           validationSchema={settingsValidation}
           onSubmit={(values) => {
@@ -64,7 +122,7 @@ const Settings = () => {
           }}
         >
           <Form>
-            <Stack justify="space-between" h="calc(100vh - 350px)">
+            <Stack justify="space-between">
               <Stack>
                 <FormInputWrappper
                   type="input"
@@ -116,6 +174,36 @@ const Settings = () => {
                     placeholder: "johndoe@gmail.com",
                   }}
                 />
+
+                <Box pl="4" pb="4">
+                  <Field name="platforms">
+                    {({ meta, field }: FieldProps) => (
+                      <FormControl isInvalid={!!(meta.error && meta.touched)}>
+                        <CheckboxGroup
+                          defaultValue={field.value}
+                          onChange={(values) => {
+                            console.log(values);
+                            setCheckedItems(values as any);
+                          }}
+                        >
+                          <Grid
+                            gridTemplateColumns={{
+                              base: "1fr 1fr",
+                            }}
+                          >
+                            <FormCheckbox
+                              checkboxOptions={checkboxOptions}
+                              name="platforms"
+                              label={<>Platforms</>}
+                              // icon={<CustomCheckBoxIcon />}
+                              variant="rounded"
+                            />
+                          </Grid>
+                        </CheckboxGroup>
+                      </FormControl>
+                    )}
+                  </Field>
+                </Box>
               </Stack>
               <Flex w="full" justify="center">
                 <Button w="85%" h="60px" bg="brand.red" type="submit">
@@ -123,31 +211,38 @@ const Settings = () => {
                 </Button>
               </Flex>
             </Stack>
-            <Flex p={4} mt={6} justify="space-between">
-              <Link href={ROUTES.HOME}>
-                <Text textStyle="p" fontWeight="normal">
-                  Home
-                </Text>
-              </Link>
-
-              <Link href={ROUTES.CHANGE_PASSWORD}>
-                <Text textStyle="p" fontWeight="normal">
-                  Change Password?
-                </Text>
-              </Link>
-            </Flex>
           </Form>
         </Formik>
-
-        <Box
-          position="fixed"
-          bottom="0"
-          left="0"
-          width="100%"
-          height="5px"
-          bg="brand.red"
-        />
       </Flex>
+      <Flex
+        p={4}
+        mt={6}
+        justify="space-between"
+        pos="fixed"
+        bottom="0"
+        bg="brand.darkGray"
+        w="full"
+      >
+        <Link href={ROUTES.HOME}>
+          <Text textStyle="p" fontWeight="normal">
+            Home
+          </Text>
+        </Link>
+
+        <Link href={ROUTES.CHANGE_PASSWORD}>
+          <Text textStyle="p" fontWeight="normal">
+            Change Password?
+          </Text>
+        </Link>
+      </Flex>
+      <Box
+        position="fixed"
+        bottom="0"
+        left="0"
+        width="100%"
+        height="5px"
+        bg="brand.red"
+      />
     </>
   );
 };
