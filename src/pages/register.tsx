@@ -15,6 +15,8 @@ import Navbar from "@/components/Navbar";
 import { useSidebar } from "@/context/SidebarContext";
 import { useRouter } from "next/router";
 import FormInputWrappper from "@/components/FormInputWrapper/FormInputWrapper";
+import FormCheckbox from "@/components/FormCheckbox/FormCheckbox";
+import { platforms } from "@/constant";
 
 const validationSchema = Yup.object({
   firstName: Yup.string()
@@ -39,6 +41,7 @@ const validationSchema = Yup.object({
     .required("Confirm Password is required"),
 
   terms: Yup.boolean().oneOf([true], "Accept Terms & Conditions is required"),
+  platforms: Yup.array().min(1, "Select at least one platform"),
 });
 
 const Register = () => {
@@ -80,6 +83,7 @@ const Register = () => {
               password: "",
               confirmPassword: "",
               terms: false,
+              platforms: [],
             }}
             validationSchema={validationSchema}
             onSubmit={handleSubmit}
@@ -164,7 +168,15 @@ const Register = () => {
                       }}
                     />
                   </Stack>
-
+                  <Box pl="4" pb="4">
+                    <FormCheckbox
+                      checkboxOptions={platforms}
+                      name="platforms"
+                      label={<>Platforms</>}
+                      // icon={<CustomCheckBoxIcon />}
+                      variant="rounded"
+                    />
+                  </Box>
                   <Flex w="full" justify="center">
                     <Box w="80%">
                       <Field name="terms">
@@ -192,7 +204,7 @@ const Register = () => {
                     </Box>
                   </Flex>
 
-                  <Flex w="full" justify="center">
+                  <Flex w="full" justify="center" mb="16">
                     <Button
                       type="submit"
                       w="85%"
@@ -208,35 +220,40 @@ const Register = () => {
             )}
           </Formik>
         </VStack>
+      </Flex>
 
-        <Box position="relative">
-          {/* Red line at the bottom */}
-          <Box
-            position="absolute"
-            bottom="0"
-            left="0"
-            w="100%"
-            h="5px"
-            bg="brand.red"
-          />
+      <Box
+        position="absolute"
+        bottom="0"
+        left="0"
+        w="100%"
+        h="5px"
+        bg="brand.red"
+        zIndex="1"
+      />
+      <Flex
+        p={4}
+        mt={6}
+        justify="space-between"
+        pos="fixed"
+        bottom="0"
+        bg="brand.dark"
+        w="full"
+      >
+        <Text textStyle={"p"} onClick={() => router.push("/")}>
+          Home
+        </Text>
 
-          <Flex mb={6} px={4} mt={6} justify="space-between">
-            <Text textStyle={"p"} onClick={() => router.push("/")}>
-              Home
-            </Text>
-
-            <Text textAlign="center" textStyle="p" fontWeight="normal">
-              Have an account?{" "}
-              <Text
-                onClick={() => router.push("/login")}
-                as="span"
-                color="brand.red"
-              >
-                Login
-              </Text>
-            </Text>
-          </Flex>
-        </Box>
+        <Text textAlign="center" textStyle="p" fontWeight="normal">
+          Have an account?{" "}
+          <Text
+            onClick={() => router.push("/login")}
+            as="span"
+            color="brand.red"
+          >
+            Login
+          </Text>
+        </Text>
       </Flex>
     </>
   );

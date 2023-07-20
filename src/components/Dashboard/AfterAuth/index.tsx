@@ -49,16 +49,18 @@ const AfterAuth = () => {
               <InputLeftElement w="16" pointerEvents="none" h="60px">
                 <Icon as={BsSearch} boxSize="4" />
               </InputLeftElement>
-              <Input size="md" placeholder="Search" pl="14" h="60px" />
+              <Input
+                size="md"
+                placeholder="123 Main St, O'Fallon Mo"
+                pl="14"
+                h="60px"
+              />
             </InputGroup>
-            <Text mt={3} textAlign="center" textStyle="p">
-              Search by Address (123 Main St, O'Fallon Mo)
-            </Text>
           </Box>
 
           <Flex direction="column">
-            <Text mt={3} color="brand.red" textStyle="p">
-              Search by Address (123 Main St, O'Fallon Mo)
+            <Text mt={3} fontWeight="bold" textStyle="p">
+              Results
             </Text>
             <Divider mb={3} />
 

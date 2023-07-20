@@ -1,20 +1,24 @@
 import FileUpload from "@/components/FileUpload";
+import FormCheckbox from "@/components/FormCheckbox/FormCheckbox";
 import FormInputWrappper from "@/components/FormInputWrapper/FormInputWrapper";
 import Navbar from "@/components/Navbar";
+import { platforms } from "@/constant";
 import { useSidebar } from "@/context/SidebarContext";
 import { ROUTES } from "@/routes";
 import { Link } from "@chakra-ui/next-js";
 import {
   Box,
   Button,
+  CheckboxGroup,
   Flex,
+  FormControl,
+  Grid,
   HStack,
-  Input,
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { Form, Formik } from "formik";
-import { useRouter } from "next/router";
+import { Field, FieldProps, Form, Formik } from "formik";
+import { useState } from "react";
 
 import * as Yup from "yup";
 
@@ -32,14 +36,16 @@ const settingsValidation = Yup.object().shape({
     .max(50, "Too Long!")
     .required("Phone number is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
+  platforms: Yup.array().min(1, "Select at least one platform"),
 });
 
 const Settings = () => {
   const { toggleSidebar } = useSidebar();
+
   return (
     <>
       <Navbar pageName="Settings" toggleRightCollapse={toggleSidebar} />
-      <Flex direction="column" p="4">
+      <Flex direction="column" p="4" mb="16">
         <Stack mt="72px" mb="16px">
           <HStack>
             <FileUpload />
@@ -57,6 +63,7 @@ const Settings = () => {
             lastName: "",
             phone: "",
             email: "",
+            platforms: [],
           }}
           validationSchema={settingsValidation}
           onSubmit={(values) => {
@@ -64,7 +71,7 @@ const Settings = () => {
           }}
         >
           <Form>
-            <Stack justify="space-between" h="calc(100vh - 350px)">
+            <Stack justify="space-between">
               <Stack>
                 <FormInputWrappper
                   type="input"
@@ -116,6 +123,16 @@ const Settings = () => {
                     placeholder: "johndoe@gmail.com",
                   }}
                 />
+
+                <Box pl="4" pb="4">
+                  <FormCheckbox
+                    checkboxOptions={platforms}
+                    name="platforms"
+                    label={<>Platforms</>}
+                    // icon={<CustomCheckBoxIcon />}
+                    variant="rounded"
+                  />
+                </Box>
               </Stack>
               <Flex w="full" justify="center">
                 <Button w="85%" h="60px" bg="brand.red" type="submit">
@@ -123,31 +140,38 @@ const Settings = () => {
                 </Button>
               </Flex>
             </Stack>
-            <Flex p={4} mt={6} justify="space-between">
-              <Link href={ROUTES.HOME}>
-                <Text textStyle="p" fontWeight="normal">
-                  Home
-                </Text>
-              </Link>
-
-              <Link href={ROUTES.CHANGE_PASSWORD}>
-                <Text textStyle="p" fontWeight="normal">
-                  Change Password?
-                </Text>
-              </Link>
-            </Flex>
           </Form>
         </Formik>
-
-        <Box
-          position="fixed"
-          bottom="0"
-          left="0"
-          width="100%"
-          height="5px"
-          bg="brand.red"
-        />
       </Flex>
+      <Flex
+        p={4}
+        mt={6}
+        justify="space-between"
+        pos="fixed"
+        bottom="0"
+        bg="brand.dark"
+        w="full"
+      >
+        <Link href={ROUTES.HOME}>
+          <Text textStyle="p" fontWeight="normal">
+            Home
+          </Text>
+        </Link>
+
+        <Link href={ROUTES.CHANGE_PASSWORD}>
+          <Text textStyle="p" fontWeight="normal">
+            Change Password?
+          </Text>
+        </Link>
+      </Flex>
+      <Box
+        position="fixed"
+        bottom="0"
+        left="0"
+        width="100%"
+        height="5px"
+        bg="brand.red"
+      />
     </>
   );
 };
