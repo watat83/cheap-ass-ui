@@ -24,31 +24,33 @@ const Payment = () => {
       id: 1,
 
       name: "Basic",
-      price: "$3.99",
-      endText: "Month",
+      price: "$4.99",
+      endText: "mo",
       features: [
-        "Allowed you to post addresses",
-        "Allow to edit and see notes",
+        "Allowed to Post Addresses",
+        "Allowed to Edit/Delete Your Listings.",
+        "See Notes from Other Members",
       ],
     },
+    // {
+    //   id: 1,
+    //   name: "Basic",
+    //   price: "$9.99",
+    //   endText: "3Months",
+    //   features: [
+    //     "Allowed you to post addresses",
+    //     "Allow to edit and see notes",
+    //   ],
+    // },
     {
       id: 1,
       name: "Basic",
-      price: "$9.99",
-      endText: "3Months",
+      price: "$23.95",
+      endText: "6mo",
       features: [
-        "Allowed you to post addresses",
-        "Allow to edit and see notes",
-      ],
-    },
-    {
-      id: 1,
-      name: "Basic",
-      price: "$19.95",
-      endText: "6Months",
-      features: [
-        "Allowed you to post addresses",
-        "Allow to edit and see notes",
+        "Allowed to Post Addresses",
+        "Allowed to Edit/Delete Your Listings.",
+        "See Notes from Other Members",
       ],
     },
   ];

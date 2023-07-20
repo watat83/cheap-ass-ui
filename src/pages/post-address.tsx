@@ -8,11 +8,9 @@ import {
   HStack,
   Input,
   InputGroup,
-  InputLeftElement,
   InputRightElement,
   Stack,
   Text,
-  Textarea,
 } from "@chakra-ui/react";
 import { SlCalender } from "react-icons/sl";
 import Select from "react-select";
@@ -55,10 +53,11 @@ const styles = {
 };
 
 const options = [
-  { value: "Spring", label: "Spring" },
-  { value: "Summer", label: "Summer" },
-  { value: "Autumn", label: "Autumn" },
-  { value: "Winter", label: "Winter" },
+  { value: "Low Tip", label: "Low Tip" },
+  { value: "Missing Items", label: "Missing Items" },
+  { value: "Never Arrived", label: "Never Arrived" },
+  { value: "No Tip", label: "No Tip" },
+  { value: "Other", label: "Other" },
 ];
 
 const validationSchema = Yup.object({
@@ -69,6 +68,10 @@ const validationSchema = Yup.object({
   endTip: Yup.number().required("Please enter an end tip amount"),
   note: Yup.string().required("Please enter a note"),
   orderId: Yup.string().required("Please enter an order ID"),
+  tipBait: Yup.object({
+    value: Yup.string().required("Please select a tip bait"),
+    label: Yup.string().required("Please select a tip bait"),
+  }),
 });
 
 const PostAddress = () => {
@@ -83,13 +86,18 @@ const PostAddress = () => {
         tip: "",
         endTip: "",
         note: "",
+        tipBaitsOther: "",
+        tipBait: {
+          value: "No Tip",
+          label: "No Tip",
+        },
       }}
       validationSchema={validationSchema}
       onSubmit={(values) => {
         console.log(values);
       }}
     >
-      {({ setFieldValue }) => (
+      {({ setFieldValue, values }) => (
         <Form>
           <Navbar pageName="Post Address" toggleRightCollapse={toggleSidebar} />
           <Flex
@@ -99,7 +107,7 @@ const PostAddress = () => {
             height="100vh"
           >
             <Stack px={4} spacing={5}>
-              <Box borderRadius="full" bg="brand.darkGray" p={2} w="full">
+              <Box borderRadius="full" p={2} w="full">
                 <Text textAlign="center" textStyle="p">
                   Post address only.
                 </Text>
@@ -198,6 +206,16 @@ const PostAddress = () => {
                   </FormControl>
                 )}
               </Field>
+              {values.tipBait.label === "Other" && (
+                <FormInputWrappper
+                  type="input"
+                  name="tipBait.value"
+                  inputProps={{
+                    placeholder:
+                      "Other (Please specify in notes section below)",
+                  }}
+                />
+              )}
               <Flex gap={2}>
                 <Stack>
                   <Text textStyle="h5">Tip</Text>
@@ -228,7 +246,16 @@ const PostAddress = () => {
                 leftElement={"$"}
               />
 
-              <Flex mb={8} w="full" justify="flex-end">
+              <Flex
+                mt={6}
+                pos="fixed"
+                bottom="0"
+                bg="brand.dark"
+                w="full"
+                justifyContent="end"
+                px="8"
+                py="4"
+              >
                 <Button w="114px" h="40px" bg="brand.red" type="submit">
                   Post
                 </Button>

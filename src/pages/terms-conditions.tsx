@@ -3,7 +3,6 @@ import { useSidebar } from "@/context/SidebarContext";
 import { ROUTES } from "@/routes";
 import { Box, Flex, Text } from "@chakra-ui/react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 const TermsConditions = () => {
   const { toggleSidebar } = useSidebar();
@@ -22,6 +21,7 @@ const TermsConditions = () => {
       >
         <Box
           pb="16"
+          px="4"
           scrollMarginTop="72px"
           sx={{
             h1: {

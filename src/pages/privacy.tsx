@@ -18,6 +18,7 @@ const TermsConditions = () => {
         h="100vh"
       >
         <Box
+          px="4"
           pb="16"
           scrollMarginTop="72px"
           sx={{
