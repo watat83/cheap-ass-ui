@@ -9,7 +9,7 @@ export const ROUTES = {
   MY_LISTINGS: "/my-listing",
   PAYMENT: "/payment",
   POST_ADDRESS: "/post-address",
-  PRIVACY_POLICY: "/privacy-policy",
+  PRIVACY_POLICY: "/privacy",
   REGISTER: "/register",
   SETTINGS: "/settings",
   SPLASH: "/splash",

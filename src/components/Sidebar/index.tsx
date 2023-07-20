@@ -15,6 +15,7 @@ import {
 import FileUpload from "../FileUpload";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { ROUTES } from "@/routes";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -93,7 +94,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onOpen, onClose }) => {
                 <Flex direction="column">
                   <Link href="privacy-policy" onClick={onClose}>
                     <Text
-                      onClick={() => router.push("/privacy-policy")}
+                      onClick={() => router.push(ROUTES.PRIVACY_POLICY)}
                       mb="13px"
                       textStyle="p"
                     >
@@ -102,7 +103,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onOpen, onClose }) => {
                   </Link>
                   <Link href="terms-conditions" onClick={onClose}>
                     <Text
-                      onClick={() => router.push("/terms-conditions")}
+                      onClick={() => router.push(ROUTES.TERMS_CONDITIONS)}
                       textStyle="p"
                     >
                       Terms & Conditions
@@ -111,7 +112,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onOpen, onClose }) => {
                 </Flex>
 
                 <Box mt={4}>
-                  <Button onClick={() => router.push("/login")} bg="brand.red">
+                  <Button
+                    onClick={() => router.push(ROUTES.LOGIN)}
+                    bg="brand.red"
+                  >
                     LOG IN
                   </Button>
                 </Box>
