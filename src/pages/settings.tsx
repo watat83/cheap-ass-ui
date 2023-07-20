@@ -2,19 +2,18 @@ import FileUpload from "@/components/FileUpload";
 import FormCheckbox from "@/components/FormCheckbox/FormCheckbox";
 import FormInputWrappper from "@/components/FormInputWrapper/FormInputWrapper";
 import Navbar from "@/components/Navbar";
+import { platforms } from "@/constant";
 import { useSidebar } from "@/context/SidebarContext";
 import { ROUTES } from "@/routes";
 import { Link } from "@chakra-ui/next-js";
 import {
   Box,
   Button,
-  Checkbox,
   CheckboxGroup,
   Flex,
   FormControl,
   Grid,
   HStack,
-  Input,
   Stack,
   Text,
 } from "@chakra-ui/react";
@@ -37,61 +36,11 @@ const settingsValidation = Yup.object().shape({
     .max(50, "Too Long!")
     .required("Phone number is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
+  platforms: Yup.array().min(1, "Select at least one platform"),
 });
 
 const Settings = () => {
-  const [checkedItems, setCheckedItems] = useState([false, false]);
-
-  const allChecked = checkedItems.every(Boolean);
-  const isIndeterminate = checkedItems.some(Boolean) && !allChecked;
   const { toggleSidebar } = useSidebar();
-
-  const checkboxOptions = [
-    {
-      value: "dominos",
-      label: "Domino's",
-    },
-    {
-      value: "Gopuff",
-      label: "Gopuff",
-    },
-    {
-      value: "Grubhub",
-      label: "Grubhub",
-    },
-    {
-      value: "Instacart",
-      label: "Instacart",
-    },
-    {
-      value: "papa-johns",
-      label: "Papa John's",
-    },
-    {
-      value: "pizza-hut",
-      label: "Pizza Hut",
-    },
-    {
-      value: "Roadie",
-      label: "Roadie",
-    },
-    {
-      value: "Roadie",
-      label: "Roadie",
-    },
-    {
-      value: "Shipt",
-      label: "Shipt",
-    },
-    {
-      value: "Spark",
-      label: "Spark",
-    },
-    {
-      value: "uber",
-      label: "Uber",
-    },
-  ];
 
   return (
     <>
@@ -176,33 +125,13 @@ const Settings = () => {
                 />
 
                 <Box pl="4" pb="4">
-                  <Field name="platforms">
-                    {({ meta, field }: FieldProps) => (
-                      <FormControl isInvalid={!!(meta.error && meta.touched)}>
-                        <CheckboxGroup
-                          defaultValue={field.value}
-                          onChange={(values) => {
-                            console.log(values);
-                            setCheckedItems(values as any);
-                          }}
-                        >
-                          <Grid
-                            gridTemplateColumns={{
-                              base: "1fr 1fr",
-                            }}
-                          >
-                            <FormCheckbox
-                              checkboxOptions={checkboxOptions}
-                              name="platforms"
-                              label={<>Platforms</>}
-                              // icon={<CustomCheckBoxIcon />}
-                              variant="rounded"
-                            />
-                          </Grid>
-                        </CheckboxGroup>
-                      </FormControl>
-                    )}
-                  </Field>
+                  <FormCheckbox
+                    checkboxOptions={platforms}
+                    name="platforms"
+                    label={<>Platforms</>}
+                    // icon={<CustomCheckBoxIcon />}
+                    variant="rounded"
+                  />
                 </Box>
               </Stack>
               <Flex w="full" justify="center">
@@ -220,7 +149,7 @@ const Settings = () => {
         justify="space-between"
         pos="fixed"
         bottom="0"
-        bg="brand.darkGray"
+        bg="brand.dark"
         w="full"
       >
         <Link href={ROUTES.HOME}>

@@ -28,6 +28,7 @@ const Navbar: React.FC<NavbarProps> = ({
       bg={bg === "none" ? undefined : "#000"}
     >
       <IconButton
+        bg="brand.dark"
         onClick={() => router.back()}
         aria-label="left icon"
         icon={<AiOutlineLeft />}
@@ -35,6 +36,7 @@ const Navbar: React.FC<NavbarProps> = ({
       <Text textStyle={"h2"}>{pageName}</Text>
       <IconButton
         aria-label="menu"
+        bg="brand.dark"
         icon={<AiOutlineMenu />}
         onClick={toggleRightCollapse}
       />
