@@ -17,6 +17,8 @@ import { useRouter } from "next/router";
 import FormInputWrappper from "@/components/FormInputWrapper/FormInputWrapper";
 import FormCheckbox from "@/components/FormCheckbox/FormCheckbox";
 import { platforms } from "@/constant";
+import BottomLayout from "@/components/Layout/BottomLayout";
+import HomeLink from "@/components/HomeLink";
 
 const validationSchema = Yup.object({
   firstName: Yup.string()
@@ -56,10 +58,9 @@ const Register = () => {
   return (
     <>
       <Navbar bg="none" pageName="" toggleRightCollapse={toggleSidebar} />
-      <Flex direction="column" justify="space-between" h="100vh">
+      <Flex direction="column" justify="space-between" mb="8">
         <VStack px={4}>
           <Image
-            mt={"40px"}
             height="90px"
             width="90px"
             src="/assets/images/defaultAvatar.png"
@@ -222,27 +223,8 @@ const Register = () => {
         </VStack>
       </Flex>
 
-      <Box
-        position="absolute"
-        bottom="0"
-        left="0"
-        w="100%"
-        h="5px"
-        bg="brand.red"
-        zIndex="1"
-      />
-      <Flex
-        p={4}
-        mt={6}
-        justify="space-between"
-        pos="fixed"
-        bottom="0"
-        bg="brand.dark"
-        w="full"
-      >
-        <Text textStyle={"p"} onClick={() => router.push("/")}>
-          Home
-        </Text>
+      <BottomLayout showRedBar>
+        <HomeLink />
 
         <Text textAlign="center" textStyle="p" fontWeight="normal">
           Have an account?{" "}
@@ -254,7 +236,7 @@ const Register = () => {
             Login
           </Text>
         </Text>
-      </Flex>
+      </BottomLayout>
     </>
   );
 };

@@ -23,7 +23,7 @@ const BeforeAuth = () => {
           <VStack spacing={0}>
             <Image
               boxSize="150px"
-              src="/assets/images/Donkey_Cartoon_Mascot.jpg"
+              src="/assets/images/logo.png"
               borderRadius="50%"
               mb={"40px"}
             />

@@ -13,9 +13,9 @@ import {
   Text,
 } from "@chakra-ui/react";
 import FileUpload from "../FileUpload";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { ROUTES } from "@/routes";
+import { Link } from "@chakra-ui/next-js";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -51,7 +51,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onOpen, onClose }) => {
                 </Flex>
 
                 <Stack>
-                  <Link href={`my-listing`} onClick={onClose}>
+                  <Link href={ROUTES.MY_LISTINGS} onClick={onClose}>
                     <Flex align="center">
                       <Image src="/assets/images/Listing.svg" />
                       <Text ml={4} textStyle="h5">
@@ -61,7 +61,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onOpen, onClose }) => {
                   </Link>
                   <Divider my={2} />
 
-                  <Link href="membership" onClick={onClose}>
+                  <Link href={ROUTES.MEMBERSHIP} onClick={onClose}>
                     <Flex align="center">
                       <Image src="/assets/images/membership.svg" />
                       <Text ml={4} textStyle="h5">
@@ -92,16 +92,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onOpen, onClose }) => {
 
               <Stack spacing={0} mt={10}>
                 <Flex direction="column">
-                  <Link href="privacy-policy" onClick={onClose}>
-                    <Text
-                      onClick={() => router.push(ROUTES.PRIVACY_POLICY)}
-                      mb="13px"
-                      textStyle="p"
-                    >
+                  <Link href={ROUTES.PRIVACY_POLICY} onClick={onClose}>
+                    <Text mb="13px" textStyle="p">
                       Privacy Policy
                     </Text>
                   </Link>
-                  <Link href="terms-conditions" onClick={onClose}>
+                  <Link href={ROUTES.TERMS_CONDITIONS} onClick={onClose}>
                     <Text
                       onClick={() => router.push(ROUTES.TERMS_CONDITIONS)}
                       textStyle="p"
@@ -113,7 +109,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onOpen, onClose }) => {
 
                 <Box mt={4}>
                   <Button
-                    onClick={() => router.push(ROUTES.LOGIN)}
+                    onClick={() => {
+                      router.push(ROUTES.LOGIN);
+                      onClose();
+                    }}
                     bg="brand.red"
                   >
                     LOG IN

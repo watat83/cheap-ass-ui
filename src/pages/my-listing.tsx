@@ -1,3 +1,4 @@
+import HomeLink from "@/components/HomeLink";
 import BottomLayout from "@/components/Layout/BottomLayout";
 import Navbar from "@/components/Navbar";
 import { useSidebar } from "@/context/SidebarContext";
@@ -30,7 +31,7 @@ const MyListing = () => {
   return (
     <>
       <Navbar pageName="My Listing" toggleRightCollapse={toggleSidebar} />
-      <Flex mt="72px" direction="column" height="100vh">
+      <Flex mt="0" direction="column">
         <Stack px={4}>
           <Divider />
           {resultItems.map((item, index) => (
@@ -39,7 +40,7 @@ const MyListing = () => {
         </Stack>
 
         <BottomLayout>
-          <Link href={ROUTES.HOME}>Home</Link>
+          <HomeLink />
           <Link href={ROUTES.POST_ADDRESS}>
             <Button size="sm" bg="brand.red">
               ADD POST

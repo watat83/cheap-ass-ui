@@ -1,4 +1,6 @@
 import FormInputWrappper from "@/components/FormInputWrapper/FormInputWrapper";
+import HomeLink from "@/components/HomeLink";
+import BottomLayout from "@/components/Layout/BottomLayout";
 import Navbar from "@/components/Navbar";
 import { useSidebar } from "@/context/SidebarContext";
 import { ROUTES } from "@/routes";
@@ -21,7 +23,7 @@ const ChangePassword = () => {
   return (
     <>
       <Navbar pageName="Change Password" toggleRightCollapse={toggleSidebar} />
-      <Box mt="72px" w="full">
+      <Box w="full">
         <Text
           maxW="280px"
           textAlign="center"
@@ -91,25 +93,12 @@ const ChangePassword = () => {
                 </Button>
               </Flex>
             </Stack>
-            <Flex p={4} mt={6} justify="space-between">
-              <Link href={ROUTES.HOME}>
-                <Text textStyle="p" fontWeight="normal">
-                  Home
-                </Text>
-              </Link>
-            </Flex>
+            <BottomLayout showRedBar transparent>
+              <HomeLink />
+            </BottomLayout>
           </Form>
         </Formik>
       </Box>
-
-      <Box
-        position="fixed"
-        bottom="0"
-        left="0"
-        width="100%"
-        height="5px"
-        bg="brand.red"
-      />
     </>
   );
 };

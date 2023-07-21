@@ -1,7 +1,7 @@
+import HomeLink from "@/components/HomeLink";
+import BottomLayout from "@/components/Layout/BottomLayout";
 import Navbar from "@/components/Navbar";
 import { useSidebar } from "@/context/SidebarContext";
-import { ROUTES } from "@/routes";
-import { Link } from "@chakra-ui/next-js";
 import {
   Box,
   Button,
@@ -58,7 +58,7 @@ const Payment = () => {
   return (
     <>
       <Navbar bg="none" pageName="" toggleRightCollapse={toggleSidebar} />
-      <Flex direction="column" justify="space-between" h="100vh">
+      <Flex direction="column" justify="space-between">
         <VStack px={8}>
           <Image
             mt={"15px"}
@@ -122,21 +122,10 @@ const Payment = () => {
           </Button>
         </Flex>
 
-        <Flex p={4} mt={6} justify="space-between">
-          <Link href={ROUTES.HOME}>
-            <Text textStyle={"p"}>Home</Text>
-          </Link>
-        </Flex>
+        <BottomLayout showRedBar transparent>
+          <HomeLink />
+        </BottomLayout>
       </Flex>
-
-      <Box
-        position="fixed"
-        bottom="0"
-        left="0"
-        width="100%"
-        height="5px"
-        bg="brand.red"
-      />
     </>
   );
 };

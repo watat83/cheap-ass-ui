@@ -2,7 +2,9 @@ import { StyleFunctionProps, mode } from "@chakra-ui/theme-tools";
 
 const styles = {
   global: (props: StyleFunctionProps) => ({
-    body: {},
+    body: {
+      bg: "blackAlpha.900",
+    },
     "*::placeholder": {
       opacity: 1,
       color: "muted",

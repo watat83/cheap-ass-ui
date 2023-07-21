@@ -1,8 +1,8 @@
+import HomeLink from "@/components/HomeLink";
+import BottomLayout from "@/components/Layout/BottomLayout";
 import Navbar from "@/components/Navbar";
 import { useSidebar } from "@/context/SidebarContext";
-import { ROUTES } from "@/routes";
-import { Box, Flex, Text } from "@chakra-ui/react";
-import Link from "next/link";
+import { Box, Flex } from "@chakra-ui/react";
 
 const TermsConditions = () => {
   const { toggleSidebar } = useSidebar();
@@ -12,17 +12,10 @@ const TermsConditions = () => {
         pageName="Terms & Conditions"
         toggleRightCollapse={toggleSidebar}
       />
-      <Flex
-        p="4"
-        mt="48px"
-        direction="column"
-        justify="space-between"
-        h="100vh"
-      >
+      <Flex p="4" direction="column" justify="space-between">
         <Box
           pb="16"
-          px="4"
-          scrollMarginTop="72px"
+          px="6"
           sx={{
             h1: {
               fontSize: "2rem",
@@ -394,29 +387,9 @@ const TermsConditions = () => {
           <p>This document was last updated on June 6, 2023</p>
         </Box>
       </Flex>
-      <Flex
-        p={4}
-        mt={6}
-        justify="space-between"
-        pos="fixed"
-        bottom="0"
-        bg="brand.dark"
-        w="full"
-      >
-        <Link href={ROUTES.HOME}>
-          <Text textStyle="p" fontWeight="normal">
-            Home
-          </Text>
-        </Link>
-      </Flex>
-      <Box
-        position="fixed"
-        bottom="0"
-        left="0"
-        width="100%"
-        height="5px"
-        bg="brand.red"
-      />
+      <BottomLayout showRedBar>
+        <HomeLink />
+      </BottomLayout>
     </>
   );
 };

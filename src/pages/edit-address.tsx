@@ -14,11 +14,13 @@ import {
 } from "@chakra-ui/react";
 import { SlCalender } from "react-icons/sl";
 import Select from "react-select";
-import { Field, FieldProps, Form, Formik, useFormik } from "formik";
+import { Field, FieldProps, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { useSidebar } from "@/context/SidebarContext";
 import Navbar from "@/components/Navbar";
 import FormInputWrappper from "@/components/FormInputWrapper/FormInputWrapper";
+import { platforms, tipBaitOptions } from "@/constant";
+import BottomLayout from "@/components/Layout/BottomLayout";
 
 const styles = {
   control: (provided: any, state: any) => ({
@@ -52,22 +54,17 @@ const styles = {
   }),
 };
 
-const options = [
-  { value: "Low Tip", label: "Low Tip" },
-  { value: "Missing Items", label: "Missing Items" },
-  { value: "Never Arrived", label: "Never Arrived" },
-  { value: "No Tip", label: "No Tip" },
-  { value: "Other", label: "Other" },
-];
-
 const validationSchema = Yup.object({
   date: Yup.date().required("Please enter a date"),
   address: Yup.string().required("Please enter an address"),
-  platform: Yup.string().required("Please enter a platform"),
+  platform: Yup.object({
+    value: Yup.string().required("Please select a platform"),
+    label: Yup.string().required("Please select a platform"),
+  }),
   tip: Yup.number().required("Please enter a tip amount"),
   endTip: Yup.number().required("Please enter an end tip amount"),
   note: Yup.string().required("Please enter a note"),
-  orderId: Yup.string().required("Please enter an order ID"),
+  apt: Yup.string().required("Please enter an Apt #"),
   tipBait: Yup.object({
     value: Yup.string().required("Please select a tip bait"),
     label: Yup.string().required("Please select a tip bait"),
@@ -82,14 +79,17 @@ const EditAddress = () => {
       initialValues={{
         date: "",
         address: "",
-        platform: "",
+        platform: {
+          value: platforms[0].value,
+          label: platforms[0].label,
+        },
         tip: "",
         endTip: "",
         note: "",
         tipBaitsOther: "",
         tipBait: {
-          value: "No Tip",
-          label: "No Tip",
+          value: tipBaitOptions[0].value,
+          label: tipBaitOptions[0].label,
         },
       }}
       validationSchema={validationSchema}
@@ -100,12 +100,7 @@ const EditAddress = () => {
       {({ setFieldValue, values }) => (
         <Form>
           <Navbar pageName="Edit Address" toggleRightCollapse={toggleSidebar} />
-          <Flex
-            mt="72px"
-            direction="column"
-            justify="space-between"
-            height="100vh"
-          >
+          <Flex direction="column" justify="space-between" mb="32">
             <Stack px={4} spacing={5}>
               <Box borderRadius="full" p={2} w="full">
                 <Text textAlign="center" textStyle="p">
@@ -156,14 +151,13 @@ const EditAddress = () => {
                   }}
                   inputProps={{
                     pl: 24,
-                    placeholder:
-                      "(Dominos, Pizza Hut, Door dash, Uber, GH, etc)",
+                    placeholder: "123 Main St, O'Fallon Mo",
                   }}
                 />
                 <Box w="40%">
                   <FormInputWrappper
                     type="input"
-                    name="orderId"
+                    name="apt"
                     leftElement={"#"}
                     leftElementProps={{
                       fontSize: "15px",
@@ -172,32 +166,44 @@ const EditAddress = () => {
                     }}
                     inputProps={{
                       pl: 10,
-                      placeholder: "Order ID",
+                      placeholder: "Apt #",
                     }}
                   />
                 </Box>
               </HStack>
 
-              <FormInputWrappper
-                type="input"
-                name="platform"
-                leftElement={"Platform"}
-                leftElementProps={{
-                  fontSize: "15px",
-                  fontWeight: "semibold",
-                  pl: 10,
-                }}
-                inputProps={{
-                  pl: 24,
-                  placeholder: "(Dominos, Pizza Hut, Door dash, Uber, GH, etc)",
-                }}
-              />
+              <Field name="platform">
+                {({ field, meta }: FieldProps) => (
+                  <FormControl isInvalid={!!(meta.error && meta.touched)}>
+                    <Select
+                      id="platform"
+                      placeholder="Platform"
+                      options={platforms}
+                      styles={styles}
+                      {...field}
+                      onChange={(value) => setFieldValue("platform", value)}
+                    />
+                    <FormErrorMessage>{meta.error}</FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+              {values.platform.label === "Other" && (
+                <FormInputWrappper
+                  type="input"
+                  name="platform.value"
+                  inputProps={{
+                    placeholder:
+                      "Other (Please specify in notes section below)",
+                  }}
+                />
+              )}
               <Field name="tipBait">
                 {({ field, meta }: FieldProps) => (
                   <FormControl isInvalid={!!(meta.error && meta.touched)}>
                     <Select
+                      id="tipBait"
                       placeholder="Tip Bait"
-                      options={options}
+                      options={tipBaitOptions}
                       styles={styles}
                       {...field}
                       onChange={(value) => setFieldValue("tipBait", value)}
@@ -246,30 +252,13 @@ const EditAddress = () => {
                 leftElement={"$"}
               />
 
-              <Flex
-                mt={6}
-                pos="fixed"
-                bottom="0"
-                bg="brand.dark"
-                w="full"
-                justifyContent="end"
-                px="8"
-                py="4"
-              >
+              <BottomLayout justify="end">
                 <Button w="114px" h="40px" bg="brand.red" type="submit">
-                  Post
+                  SAVE
                 </Button>
-              </Flex>
+              </BottomLayout>
             </Stack>
           </Flex>
-          <Box
-            position="fixed"
-            bottom="0"
-            left="0"
-            w="100%"
-            h="5px"
-            bg="brand.red"
-          />
         </Form>
       )}
     </Formik>

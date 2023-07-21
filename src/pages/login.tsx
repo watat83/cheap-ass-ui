@@ -15,6 +15,8 @@ import { useRouter } from "next/router";
 import FormInputWrappper from "@/components/FormInputWrapper/FormInputWrapper";
 import { ROUTES } from "@/routes";
 import { Link } from "@chakra-ui/next-js";
+import HomeLink from "@/components/HomeLink";
+import BottomLayout from "@/components/Layout/BottomLayout";
 
 const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email address").required("Required"),
@@ -38,15 +40,14 @@ const Login = () => {
   return (
     <>
       <Navbar bg="none" pageName="" toggleRightCollapse={toggleSidebar} />
-      <Flex direction="column" justify="space-between" minH="calc(100vh)">
+      <Flex direction="column" justify="space-between">
         <Stack spacing={0} px={4}>
           <VStack>
             <Image
-              mt={"40px"}
               height="150px"
               width="150px"
               borderRadius={"50%"}
-              src="/assets/images/Donkey_Cartoon_Mascot.jpg"
+              src="/assets/images/logo.png"
               mb="40px"
             />
 
@@ -128,16 +129,12 @@ const Login = () => {
           </Formik>
         </Stack>
 
-        <Box position="relative" h="5px" bg="brand.red">
-          <Box position="absolute" bottom="0" left="0">
-            <Image src="/assets/images/map.png" />
-            <Link href={ROUTES.HOME}>
-              <Text textStyle="p" position="absolute" bottom="5" left="5">
-                Home
-              </Text>
-            </Link>
-          </Box>
+        <Box position="absolute" bottom="0">
+          <Image src="/assets/images/map.png" />
         </Box>
+        <BottomLayout showRedBar transparent>
+          <HomeLink />
+        </BottomLayout>
       </Flex>
     </>
   );

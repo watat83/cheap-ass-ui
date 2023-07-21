@@ -1,7 +1,7 @@
+import HomeLink from "@/components/HomeLink";
+import BottomLayout from "@/components/Layout/BottomLayout";
 import Navbar from "@/components/Navbar";
 import { useSidebar } from "@/context/SidebarContext";
-import { ROUTES } from "@/routes";
-import { Link } from "@chakra-ui/next-js";
 import { Box, Button, Flex, Text, VStack } from "@chakra-ui/react";
 
 const CancelSubscription = () => {
@@ -13,7 +13,7 @@ const CancelSubscription = () => {
         toggleRightCollapse={toggleSidebar}
       />
 
-      <Flex direction="column" minHeight="100vh" mt="10">
+      <Flex direction="column">
         <VStack px={4} py={8} spacing={5} align="center">
           <Text w="85%" textStyle="p" textAlign="center">
             Please enter the email address associated with your account. We will
@@ -47,11 +47,9 @@ const CancelSubscription = () => {
           bg="brand.red"
         />
 
-        <Box position="fixed" bottom="15px" left="15px">
-          <Link href={ROUTES.HOME}>
-            <Text textStyle={"p"}>Home</Text>
-          </Link>
-        </Box>
+        <BottomLayout transparent showRedBar>
+          <HomeLink />
+        </BottomLayout>
       </Flex>
     </>
   );

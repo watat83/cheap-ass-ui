@@ -48,3 +48,13 @@ export const platforms = [
     label: "Other",
   },
 ];
+
+export const tipBaitOptions = [
+  { value: "TipBait", label: "TipBait" },
+  { value: "Wrong Order", label: "Wrong Order" },
+  { value: "Low Tip", label: "Low Tip" },
+  { value: "Missing Items", label: "Missing Items" },
+  { value: "Never Arrived", label: "Never Arrived" },
+  { value: "No Tip", label: "No Tip" },
+  { value: "Other", label: "Other" },
+];
