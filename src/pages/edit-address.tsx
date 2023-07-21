@@ -19,6 +19,7 @@ import * as Yup from "yup";
 import { useSidebar } from "@/context/SidebarContext";
 import Navbar from "@/components/Navbar";
 import FormInputWrappper from "@/components/FormInputWrapper/FormInputWrapper";
+import { tipBaitOptions } from "@/constant";
 
 const styles = {
   control: (provided: any, state: any) => ({
@@ -53,6 +54,7 @@ const styles = {
 };
 
 const options = [
+  { value: "TipBait", label: "TipBait" },
   { value: "Low Tip", label: "Low Tip" },
   { value: "Missing Items", label: "Missing Items" },
   { value: "Never Arrived", label: "Never Arrived" },
@@ -88,8 +90,8 @@ const EditAddress = () => {
         note: "",
         tipBaitsOther: "",
         tipBait: {
-          value: "No Tip",
-          label: "No Tip",
+          value: tipBaitOptions[0].value,
+          label: tipBaitOptions[0].label,
         },
       }}
       validationSchema={validationSchema}

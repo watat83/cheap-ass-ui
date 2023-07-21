@@ -40,7 +40,7 @@ const ForgotPassword = () => {
               mt={"20px"}
               boxSize="150px"
               borderRadius="50%"
-              src="/assets/images/Donkey_Cartoon_Mascot.jpg"
+              src="/assets/images/logo.png"
             />
 
             <Flex direction="column">

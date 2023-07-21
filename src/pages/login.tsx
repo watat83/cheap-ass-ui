@@ -46,7 +46,7 @@ const Login = () => {
               height="150px"
               width="150px"
               borderRadius={"50%"}
-              src="/assets/images/Donkey_Cartoon_Mascot.jpg"
+              src="/assets/images/logo.png"
               mb="40px"
             />
 
