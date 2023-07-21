@@ -16,10 +16,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       w="100%"
       bg="brand.dark"
       color="brand.white"
+      maxW="md"
+      mx="auto"
     >
-      <Flex direction="column" overflowY="auto">
-        {children}
-      </Flex>
+      {children}
 
       <Sidebar
         isOpen={isSidebarOpen}

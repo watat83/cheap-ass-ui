@@ -17,9 +17,8 @@ const Navbar: React.FC<NavbarProps> = ({
   const router = useRouter();
   return (
     <Flex
-      position="fixed"
+      position="sticky"
       top={0}
-      left={0}
       width={"full"}
       align="center"
       justify="space-between"

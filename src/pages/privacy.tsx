@@ -1,3 +1,5 @@
+import HomeLink from "@/components/HomeLink";
+import BottomLayout from "@/components/Layout/BottomLayout";
 import Navbar from "@/components/Navbar";
 import { useSidebar } from "@/context/SidebarContext";
 import { ROUTES } from "@/routes";
@@ -10,17 +12,10 @@ const TermsConditions = () => {
   return (
     <>
       <Navbar pageName="Privacy Policy" toggleRightCollapse={toggleSidebar} />
-      <Flex
-        p="4"
-        mt="48px"
-        direction="column"
-        justify="space-between"
-        h="100vh"
-      >
+      <Flex p="4" direction="column" justify="space-between">
         <Box
-          px="4"
+          px="6"
           pb="16"
-          scrollMarginTop="72px"
           sx={{
             h1: {
               fontSize: "2rem",
@@ -726,29 +721,9 @@ const TermsConditions = () => {
           <p>This document was last updated on June 5, 2023</p>
         </Box>
       </Flex>
-      <Flex
-        p={4}
-        mt={6}
-        justify="space-between"
-        pos="fixed"
-        bottom="0"
-        bg="brand.dark"
-        w="full"
-      >
-        <Link href={ROUTES.HOME}>
-          <Text textStyle="p" fontWeight="normal">
-            Home
-          </Text>
-        </Link>
-      </Flex>
-      <Box
-        position="fixed"
-        bottom="0"
-        left="0"
-        width="100%"
-        height="5px"
-        bg="brand.red"
-      />
+      <BottomLayout showRedBar>
+        <HomeLink />
+      </BottomLayout>
     </>
   );
 };

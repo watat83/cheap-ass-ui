@@ -1,6 +1,8 @@
 import FileUpload from "@/components/FileUpload";
 import FormCheckbox from "@/components/FormCheckbox/FormCheckbox";
 import FormInputWrappper from "@/components/FormInputWrapper/FormInputWrapper";
+import HomeLink from "@/components/HomeLink";
+import BottomLayout from "@/components/Layout/BottomLayout";
 import Navbar from "@/components/Navbar";
 import { platforms } from "@/constant";
 import { useSidebar } from "@/context/SidebarContext";
@@ -46,7 +48,7 @@ const Settings = () => {
     <>
       <Navbar pageName="Settings" toggleRightCollapse={toggleSidebar} />
       <Flex direction="column" p="4" mb="16">
-        <Stack mt="72px" mb="16px">
+        <Stack mb="16px">
           <HStack>
             <FileUpload />
             <Text ml={4} textStyle="h5">
@@ -143,27 +145,15 @@ const Settings = () => {
           </Form>
         </Formik>
       </Flex>
-      <Flex
-        p={4}
-        mt={6}
-        justify="space-between"
-        pos="fixed"
-        bottom="0"
-        bg="brand.dark"
-        w="full"
-      >
-        <Link href={ROUTES.HOME}>
-          <Text textStyle="p" fontWeight="normal">
-            Home
-          </Text>
-        </Link>
+      <BottomLayout showRedBar>
+        <HomeLink />
 
         <Link href={ROUTES.CHANGE_PASSWORD}>
           <Text textStyle="p" fontWeight="normal">
             Change Password?
           </Text>
         </Link>
-      </Flex>
+      </BottomLayout>
       <Box
         position="fixed"
         bottom="0"

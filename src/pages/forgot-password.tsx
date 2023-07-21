@@ -1,4 +1,6 @@
 import FormInputWrappper from "@/components/FormInputWrapper/FormInputWrapper";
+import HomeLink from "@/components/HomeLink";
+import BottomLayout from "@/components/Layout/BottomLayout";
 import Navbar from "@/components/Navbar";
 import { useSidebar } from "@/context/SidebarContext";
 import { ROUTES } from "@/routes";
@@ -33,7 +35,7 @@ const ForgotPassword = () => {
   return (
     <>
       <Navbar bg="none" pageName="" toggleRightCollapse={toggleSidebar} />
-      <Flex direction="column" justify="space-between" h="100vh">
+      <Flex direction="column" justify="space-between">
         <Stack px={4}>
           <VStack>
             <Image
@@ -96,22 +98,12 @@ const ForgotPassword = () => {
           </Formik>
         </Stack>
 
-        <Box
-          position="fixed"
-          bottom="0"
-          left="0"
-          width="100%"
-          height="5px"
-          bg="brand.red"
-        />
-        <Box position="relative">
+        <Box position="absolute" bottom="0">
           <Image src="/assets/images/map.png" />
-          <Link href={ROUTES.HOME}>
-            <Text textStyle={"p"} position="absolute" bottom={5} left={5}>
-              Home
-            </Text>
-          </Link>
         </Box>
+        <BottomLayout showRedBar transparent>
+          <HomeLink />
+        </BottomLayout>
       </Flex>
     </>
   );

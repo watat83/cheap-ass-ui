@@ -20,6 +20,7 @@ import { useSidebar } from "@/context/SidebarContext";
 import Navbar from "@/components/Navbar";
 import FormInputWrappper from "@/components/FormInputWrapper/FormInputWrapper";
 import { platforms, tipBaitOptions } from "@/constant";
+import BottomLayout from "@/components/Layout/BottomLayout";
 
 const styles = {
   control: (provided: any, state: any) => ({
@@ -99,13 +100,7 @@ const PostAddress = () => {
       {({ setFieldValue, values }) => (
         <Form>
           <Navbar pageName="Post Address" toggleRightCollapse={toggleSidebar} />
-          <Flex
-            mt="72px"
-            direction="column"
-            justify="space-between"
-            minH="100vh"
-            mb="20"
-          >
+          <Flex direction="column" justify="space-between" mb="32">
             <Stack px={4} spacing={5}>
               <Box borderRadius="full" p={2} w="full">
                 <Text textAlign="center" textStyle="p">
@@ -257,30 +252,13 @@ const PostAddress = () => {
                 leftElement={"$"}
               />
 
-              <Flex
-                mt={6}
-                pos="fixed"
-                bottom="0"
-                bg="brand.dark"
-                w="full"
-                justifyContent="end"
-                px="8"
-                py="4"
-              >
+              <BottomLayout justify="end">
                 <Button w="114px" h="40px" bg="brand.red" type="submit">
                   Post
                 </Button>
-              </Flex>
+              </BottomLayout>
             </Stack>
           </Flex>
-          <Box
-            position="fixed"
-            bottom="0"
-            left="0"
-            w="100%"
-            h="5px"
-            bg="brand.red"
-          />
         </Form>
       )}
     </Formik>
