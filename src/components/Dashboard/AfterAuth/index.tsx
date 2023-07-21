@@ -1,3 +1,4 @@
+import BottomLayout from "@/components/Layout/BottomLayout";
 import Navbar from "@/components/Navbar";
 import { useSidebar } from "@/context/SidebarContext";
 import { ROUTES } from "@/routes";
@@ -40,7 +41,7 @@ const AfterAuth = () => {
   return (
     <>
       <Navbar pageName="" toggleRightCollapse={toggleSidebar} />
-      <Flex mt={"72px"} direction="column" height="100vh">
+      <Flex direction="column">
         <Stack px={4} spacing={5}>
           <Text textStyle="h4">CheapAss Database</Text>
 
@@ -75,17 +76,7 @@ const AfterAuth = () => {
           </Flex>
         </Stack>
 
-        <Flex
-          width="full"
-          position="fixed"
-          bottom={0}
-          left={0}
-          align="center"
-          justify="space-between"
-          py={6}
-          px={10}
-          bg="brand.darkGray"
-        >
+        <BottomLayout>
           <Link href={ROUTES.MY_LISTINGS}>
             <Button size="sm" bg="brand.red">
               EDIT
@@ -96,7 +87,7 @@ const AfterAuth = () => {
               POST
             </Button>
           </Link>
-        </Flex>
+        </BottomLayout>
       </Flex>
     </>
   );

@@ -2,12 +2,9 @@ import HomeLink from "@/components/HomeLink";
 import BottomLayout from "@/components/Layout/BottomLayout";
 import Navbar from "@/components/Navbar";
 import { useSidebar } from "@/context/SidebarContext";
-import { ROUTES } from "@/routes";
-import { Box, Flex, Text } from "@chakra-ui/react";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { Box, Flex } from "@chakra-ui/react";
 
-const TermsConditions = () => {
+const PrivacyPolicy = () => {
   const { toggleSidebar } = useSidebar();
   return (
     <>
@@ -728,4 +725,4 @@ const TermsConditions = () => {
   );
 };
 
-export default TermsConditions;
+export default PrivacyPolicy;
