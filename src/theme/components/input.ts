@@ -5,7 +5,7 @@ const variants = {
     return {
       field: {
         bg: "brand.darkGray",
-        borderRadius: "999px",
+        borderRadius: "10px",
         outline: "none",
         fontFamily: "body",
         focusBorderColor: "transparent",
