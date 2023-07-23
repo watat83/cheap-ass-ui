@@ -1,6 +1,6 @@
 import { ROUTES } from "@/routes";
 import { Link } from "@chakra-ui/next-js";
-import { Text } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import { FC } from "react";
 
 interface IHomeLinkProps {}
@@ -8,9 +8,9 @@ interface IHomeLinkProps {}
 const HomeLink: FC<IHomeLinkProps> = ({}) => {
   return (
     <Link href={ROUTES.HOME}>
-      <Text textStyle="p" fontWeight="normal">
+      <Button size="sm" variant="white">
         Home
-      </Text>
+      </Button>
     </Link>
   );
 };
