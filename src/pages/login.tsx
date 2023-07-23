@@ -123,6 +123,9 @@ const Login = () => {
                       </Text>
                     </Link>
                   </Text>
+                  <Link href={ROUTES.HOME} textAlign="center">
+                    Continue as Guest
+                  </Link>
                 </Stack>
               </Form>
             )}
