@@ -42,7 +42,7 @@ const ForgotPassword = () => {
               mt={"20px"}
               boxSize="150px"
               borderRadius="50%"
-              src="/assets/images/logo.png"
+              src="/assets/images/donkey_logo.webp"
             />
 
             <Flex direction="column">
