@@ -6,6 +6,7 @@ import { ROUTES } from "@/routes";
 import { Link } from "@chakra-ui/next-js";
 import {
   Box,
+  Button,
   Flex,
   Image,
   ListItem,
@@ -63,13 +64,16 @@ const Membership = () => {
             </VStack>
             <Flex direction="column" mt="4">
               <Text pl="4" mb="9px" textStyle="p">
-                Benefits are:
+                Member Benefits:
               </Text>
               <UnorderedList>
                 <ListItem mb="3px" textStyle="p2">
-                  Allowed you to post addresses.
+                  Allowed to Post Addresses.
                 </ListItem>
-                <ListItem textStyle="p2">Allow to edit and see notes.</ListItem>
+                <ListItem textStyle="p2">
+                  Allowed to Edit/Delete Your Listings,
+                </ListItem>
+                <ListItem textStyle="p2">See Notes from Other Members</ListItem>
               </UnorderedList>
             </Flex>
           </Box>
@@ -79,9 +83,9 @@ const Membership = () => {
           <HomeLink />
 
           <Link href={ROUTES.CANCEL_SUBSCRIPTION}>
-            <Text textStyle="p" fontWeight="normal">
+            <Button size="sm" variant="white">
               Cancel Subscription?
-            </Text>
+            </Button>
           </Link>
         </BottomLayout>
       </Flex>
