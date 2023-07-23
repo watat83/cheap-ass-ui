@@ -1,6 +1,6 @@
 export const platforms = [
   {
-    value: "dominos",
+    value: "Domino's",
     label: "Domino's",
   },
   {
@@ -16,16 +16,16 @@ export const platforms = [
     label: "Instacart",
   },
   {
-    value: "papa-johns",
+    value: "Papa John's",
     label: "Papa John's",
   },
   {
-    value: "pizza-hut",
+    value: "Pizza Hut",
     label: "Pizza Hut",
   },
   {
-    value: "Roadie",
-    label: "Roadie",
+    value: "DoorDash",
+    label: "DoorDash",
   },
   {
     value: "Roadie",
@@ -50,11 +50,11 @@ export const platforms = [
 ];
 
 export const tipBaitOptions = [
-  { value: "TipBait", label: "TipBait" },
-  { value: "Wrong Order", label: "Wrong Order" },
-  { value: "Low Tip", label: "Low Tip" },
-  { value: "Missing Items", label: "Missing Items" },
-  { value: "Never Arrived", label: "Never Arrived" },
   { value: "No Tip", label: "No Tip" },
+  { value: "Low Tip", label: "Low Tip" },
+  { value: "TipBait", label: "TipBait" },
+  { value: "Missing Items", label: "Missing Items" },
+  { value: "Food Never Arrived", label: "Food Never Arrived" },
+  { value: "Wrong Order", label: "Wrong Order" },
   { value: "Other", label: "Other" },
 ];

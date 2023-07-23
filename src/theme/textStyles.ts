@@ -55,7 +55,7 @@ const textStyles = {
   },
 
   p1: {
-    fontSize: "12px",
+    fontSize: "14px",
     fontFamily: "body",
     lineHeight: "20px",
     color: "brand.white",

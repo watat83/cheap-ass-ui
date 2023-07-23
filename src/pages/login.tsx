@@ -47,7 +47,7 @@ const Login = () => {
               height="150px"
               width="150px"
               borderRadius={"50%"}
-              src="/assets/images/logo.png"
+              src="/assets/images/donkey_logo.webp"
               mb="40px"
             />
 
@@ -123,6 +123,9 @@ const Login = () => {
                       </Text>
                     </Link>
                   </Text>
+                  <Link href={ROUTES.HOME} textAlign="center">
+                    Continue as Guest
+                  </Link>
                 </Stack>
               </Form>
             )}

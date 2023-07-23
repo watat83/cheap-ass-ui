@@ -16,6 +16,13 @@ const variants = {
     textTransform: "uppercase",
     _focus: {},
   },
+  white: {
+    color: "brand.dark",
+    bg: "brand.white",
+    fontSize: "16px",
+    textTransform: "uppercase",
+    px: "35px",
+  },
 };
 
 const defaultProps = {

@@ -43,7 +43,7 @@ const MyListing = () => {
           <HomeLink />
           <Link href={ROUTES.POST_ADDRESS}>
             <Button size="sm" bg="brand.red">
-              ADD POST
+              POST
             </Button>
           </Link>
         </BottomLayout>

@@ -1,4 +1,3 @@
-import input from "@/theme/components/input";
 import {
   InputGroup,
   InputLeftElement,
@@ -40,6 +39,8 @@ type IFormInputWrappperProps = {
   name: string;
   inputGroupProps?: InputGroupProps;
   label?: ReactNode | string;
+  isDisabled?: boolean;
+  placeholder?: string;
 } & (InputType | TextAreaType | SelectType);
 
 const FormInputWrappper: FC<IFormInputWrappperProps> = (props) => {
@@ -52,11 +53,15 @@ const FormInputWrappper: FC<IFormInputWrappperProps> = (props) => {
       rightElement,
       rightElementProps,
       inputGroupProps,
+      isDisabled,
     } = props;
     return (
       <Field name={name}>
         {({ field, meta }: FieldProps) => (
-          <FormControl isInvalid={!!(meta.error && meta.touched)}>
+          <FormControl
+            isInvalid={!!(meta.error && meta.touched)}
+            isDisabled={isDisabled}
+          >
             <InputGroup borderRadius="full" {...inputGroupProps}>
               {leftElement && (
                 <InputLeftElement
@@ -92,11 +97,14 @@ const FormInputWrappper: FC<IFormInputWrappperProps> = (props) => {
     );
   }
   if (props.type === "textarea") {
-    const { textareaProps, label, name } = props;
+    const { textareaProps, label, name, isDisabled, placeholder } = props;
     return (
       <Field name={name}>
         {({ field, meta }: FieldProps) => (
-          <FormControl isInvalid={!!(meta.error && meta.touched)}>
+          <FormControl
+            isInvalid={!!(meta.error && meta.touched)}
+            isDisabled={isDisabled}
+          >
             <FormLabel textStyle="p" htmlFor={name}>
               {label}
             </FormLabel>
@@ -111,8 +119,8 @@ const FormInputWrappper: FC<IFormInputWrappperProps> = (props) => {
               _active={{ outline: "none" }}
               _placeholder={{ fontSize: "14px" }}
               border="none"
-              placeholder=""
-              {...field}
+              placeholder={placeholder}
+              {...field}  
               {...textareaProps}
             />
             <FormErrorMessage>{meta.error}</FormErrorMessage>

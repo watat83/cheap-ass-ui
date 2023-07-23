@@ -40,10 +40,10 @@ const AfterAuth = () => {
 
   return (
     <>
-      <Navbar pageName="" toggleRightCollapse={toggleSidebar} />
+      <Navbar pageName="" showLogo toggleRightCollapse={toggleSidebar} />
       <Flex direction="column">
         <Stack px={4} spacing={5}>
-          <Text textStyle="h4">CheapAss Database</Text>
+          <Text textStyle="h4">CheapAss</Text>
 
           <Box>
             <InputGroup>
@@ -60,7 +60,7 @@ const AfterAuth = () => {
           </Box>
 
           <Flex direction="column">
-            <Text mt={3} fontWeight="bold" textStyle="p">
+            <Text mt={3} fontWeight="bold" fontSize="lg">
               Results
             </Text>
             <Divider mb={3} />
