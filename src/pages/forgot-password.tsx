@@ -39,7 +39,6 @@ const ForgotPassword = () => {
         <Stack px={4}>
           <VStack>
             <Image
-              mt={"20px"}
               boxSize="150px"
               borderRadius="50%"
               src="/assets/images/donkey_logo.webp"
@@ -83,6 +82,7 @@ const ForgotPassword = () => {
 
                   <Flex w="full" justify="center">
                     <Button
+                      mt="80px"
                       type="submit"
                       w="85%"
                       h="60px"
