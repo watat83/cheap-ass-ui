@@ -8,19 +8,8 @@ import { platforms } from "@/constant";
 import { useSidebar } from "@/context/SidebarContext";
 import { ROUTES } from "@/routes";
 import { Link } from "@chakra-ui/next-js";
-import {
-  Box,
-  Button,
-  CheckboxGroup,
-  Flex,
-  FormControl,
-  Grid,
-  HStack,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
-import { Field, FieldProps, Form, Formik } from "formik";
-import { useState } from "react";
+import { Box, Button, Flex, HStack, Stack, Text } from "@chakra-ui/react";
+import { Form, Formik } from "formik";
 
 import * as Yup from "yup";
 
@@ -149,9 +138,7 @@ const Settings = () => {
         <HomeLink />
 
         <Link href={ROUTES.CHANGE_PASSWORD}>
-          <Text textStyle="p" fontWeight="normal">
-            Change Password?
-          </Text>
+          <Button variant="white">Change Password</Button>
         </Link>
       </BottomLayout>
       <Box
