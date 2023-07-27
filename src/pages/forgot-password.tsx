@@ -1,5 +1,4 @@
 import FormInputWrappper from "@/components/FormInputWrapper/FormInputWrapper";
-import HomeLink from "@/components/HomeLink";
 import BottomLayout from "@/components/Layout/BottomLayout";
 import Navbar from "@/components/Navbar";
 import { useSidebar } from "@/context/SidebarContext";
@@ -81,6 +80,7 @@ const ForgotPassword = () => {
                       type="submit"
                       w="85%"
                       h="60px"
+                      borderRadius="md"
                       bg="brand.red"
                       isLoading={isSubmitting}
                     >
@@ -96,9 +96,7 @@ const ForgotPassword = () => {
         <Box position="absolute" bottom="0">
           <Image src="/assets/images/map.png" />
         </Box>
-        <BottomLayout showRedBar transparent>
-          <HomeLink />
-        </BottomLayout>
+        <BottomLayout showRedBar transparent><></></BottomLayout>
       </Flex>
     </>
   );

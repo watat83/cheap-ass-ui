@@ -31,7 +31,7 @@ const CancelSubscription = () => {
           </Text>
 
           <Flex w="full" justify="center" mt="4">
-            <Button w="85%" h="60px" bg="brand.red">
+            <Button w="85%" h="60px" borderRadius="md" bg="brand.red">
               SEND REQUEST
             </Button>
           </Flex>

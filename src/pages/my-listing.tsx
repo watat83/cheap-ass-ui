@@ -1,4 +1,3 @@
-import HomeLink from "@/components/HomeLink";
 import BottomLayout from "@/components/Layout/BottomLayout";
 import Navbar from "@/components/Navbar";
 import { useSidebar } from "@/context/SidebarContext";
@@ -40,9 +39,13 @@ const MyListing = () => {
         </Stack>
 
         <BottomLayout>
-          <HomeLink />
+          <Link href={ROUTES.MY_LISTINGS}>
+            <Button size="sm" variant="link">
+              EDIT
+            </Button>
+          </Link>
           <Link href={ROUTES.POST_ADDRESS}>
-            <Button size="sm" bg="brand.red">
+            <Button size="sm" variant="link">
               POST
             </Button>
           </Link>
