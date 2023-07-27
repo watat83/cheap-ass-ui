@@ -109,6 +109,7 @@ const Login = () => {
                       w="85%"
                       h="60px"
                       bg="brand.red"
+                      borderRadius="md"
                       isLoading={isSubmitting}
                     >
                       LOG IN
