@@ -1,22 +1,17 @@
 import FormInputWrappper from "@/components/FormInputWrapper/FormInputWrapper";
-import HomeLink from "@/components/HomeLink";
 import BottomLayout from "@/components/Layout/BottomLayout";
 import Navbar from "@/components/Navbar";
 import { useSidebar } from "@/context/SidebarContext";
-import { ROUTES } from "@/routes";
-import { Link } from "@chakra-ui/next-js";
 import {
   Box,
   Button,
   Flex,
   Image,
-  Input,
   Stack,
   Text,
   VStack,
 } from "@chakra-ui/react";
 import { Formik, Form } from "formik";
-import { useRouter } from "next/router";
 import * as Yup from "yup";
 
 const validationSchema = Yup.object({
@@ -24,7 +19,6 @@ const validationSchema = Yup.object({
 });
 
 const ForgotPassword = () => {
-  const router = useRouter();
   const { toggleSidebar } = useSidebar();
   const handleSubmit = (values: any, { setSubmitting }: any) => {
     // Handle form submission logic here
@@ -86,6 +80,7 @@ const ForgotPassword = () => {
                       type="submit"
                       w="85%"
                       h="60px"
+                      borderRadius="md"
                       bg="brand.red"
                       isLoading={isSubmitting}
                     >
@@ -101,9 +96,7 @@ const ForgotPassword = () => {
         <Box position="absolute" bottom="0">
           <Image src="/assets/images/map.png" />
         </Box>
-        <BottomLayout showRedBar transparent>
-          <HomeLink />
-        </BottomLayout>
+        <BottomLayout showRedBar transparent><></></BottomLayout>
       </Flex>
     </>
   );

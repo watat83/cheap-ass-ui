@@ -8,7 +8,7 @@ interface IHomeLinkProps {}
 const HomeLink: FC<IHomeLinkProps> = ({}) => {
   return (
     <Link href={ROUTES.HOME}>
-      <Button size="sm" variant="white">
+      <Button size="sm" variant="link">
         Home
       </Button>
     </Link>

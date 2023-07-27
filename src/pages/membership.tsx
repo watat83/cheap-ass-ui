@@ -63,14 +63,12 @@ const Membership = () => {
               </Stack>
             </VStack>
             <Flex direction="column" mt="4">
-              <Text pl="4" mb="9px" textStyle="p">
+              <Text pl="4" mb="10px" textStyle="p">
                 Member Benefits:
               </Text>
-              <UnorderedList>
-                <ListItem mb="3px" textStyle="p2">
-                  Allowed to Post Addresses.
-                </ListItem>
-                <ListItem textStyle="p2">
+              <UnorderedList display="flex" gap="1" flexDirection="column">
+                <ListItem textStyle="p2">Allowed to Post Addresses.</ListItem>
+                <ListItem textStyle="p2" fontSize="11px">
                   Allowed to Edit/Delete Your Listings,
                 </ListItem>
                 <ListItem textStyle="p2">See Notes from Other Members</ListItem>
@@ -83,7 +81,7 @@ const Membership = () => {
           <HomeLink />
 
           <Link href={ROUTES.CANCEL_SUBSCRIPTION}>
-            <Button size="sm" variant="white">
+            <Button size="sm" variant="link">
               Cancel Subscription?
             </Button>
           </Link>

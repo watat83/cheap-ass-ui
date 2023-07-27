@@ -6,19 +6,22 @@ import {
   FormControl,
   FormErrorMessage,
   HStack,
+  Input,
+  InputGroup,
+  InputRightElement,
   Stack,
   Text,
 } from "@chakra-ui/react";
 import Select from "react-select";
 import { Field, FieldProps, Form, Formik } from "formik";
-import * as Yup from "yup";
+import { number, object, string } from "yup";
 import { useSidebar } from "@/context/SidebarContext";
 import Navbar from "@/components/Navbar";
 import FormInputWrappper from "@/components/FormInputWrapper/FormInputWrapper";
 import { platforms, tipBaitOptions } from "@/constant";
 import BottomLayout from "@/components/Layout/BottomLayout";
 import HomeLink from "@/components/HomeLink";
-
+import { SlCalender } from "react-icons/sl";
 const styles = {
   control: (provided: any, state: any) => ({
     ...provided,
@@ -51,19 +54,39 @@ const styles = {
   }),
 };
 
-const validationSchema = Yup.object({
-  address: Yup.string().required("Please enter an address"),
-  platform: Yup.object({
-    value: Yup.string().max(20).required("Please select a platform"),
-    label: Yup.string().required("Please select a platform"),
+const validationSchema = object({
+  address: string().required("Please enter an address"),
+  platform: object({
+    value: string().max(20).required("Please select a platform"),
+    label: string().required("Please select a platform"),
   }),
-  tip: Yup.string(),
-  endTip: Yup.number(),
-  note: Yup.string(),
-  apt: Yup.string(),
-  tipBait: Yup.object({
-    value: Yup.string().required("Please select a tip bait"),
-    label: Yup.string().required("Please select a tip bait"),
+
+  note: string(),
+  apt: string(),
+  tipBait: object({
+    value: string().required("Please select a tip bait"),
+    label: string().required("Please select a tip bait"),
+  }),
+
+  date: string().required("Please select a date"),
+  endTip: number().when("tipBait", ([tipBait], schema) => {
+    if (
+      tipBait.value === tipBaitOptions[0].value ||
+      tipBait.value === tipBaitOptions[1].value
+    ) {
+      return number().required("Please enter an end tip");
+    }
+    return schema;
+  }),
+  tip: string().when("tipBait", ([tipBait], schema) => {
+    if (
+      tipBait.value === tipBaitOptions[0].value ||
+      tipBait.value === tipBaitOptions[1].value ||
+      tipBait.value === tipBaitOptions[2].value
+    ) {
+      return string().required("Please enter an end tip");
+    }
+    return schema;
   }),
 });
 
@@ -78,6 +101,7 @@ const EditAddress = () => {
           value: platforms[0].value,
           label: platforms[0].label,
         },
+        date: "",
         tip: "N/A",
         endTip: "",
         note: "",
@@ -97,6 +121,36 @@ const EditAddress = () => {
           <Navbar pageName="Edit Address" toggleRightCollapse={toggleSidebar} />
           <Flex direction="column" justify="space-between" mb="32">
             <Stack px={4} spacing={5}>
+              <HStack justify="end" mt="4">
+                <Field name="date">
+                  {({ field, meta }: FieldProps) => (
+                    <FormControl
+                      w="60%"
+                      isInvalid={!!(meta.error && meta.touched)}
+                    >
+                      <InputGroup position="relative">
+                        <Input
+                          variant="filled"
+                          type="date"
+                          placeholder="Input date"
+                          {...field}
+                          pr="4"
+                          cursor="pointer"
+                        />
+                        <InputRightElement
+                          position="absolute"
+                          top={0}
+                          pointerEvents="none"
+                          right={0}
+                        >
+                          <SlCalender color="white" />
+                        </InputRightElement>
+                      </InputGroup>
+                      <FormErrorMessage>{meta.error}</FormErrorMessage>
+                    </FormControl>
+                  )}
+                </Field>
+              </HStack>
               <HStack alignItems="start">
                 <FormInputWrappper
                   type="input"
@@ -214,6 +268,7 @@ const EditAddress = () => {
                   />
                 </Stack>
               </Flex>
+
               <FormInputWrappper
                 type="textarea"
                 label="Notes"
@@ -222,12 +277,21 @@ const EditAddress = () => {
                 leftElement={"$"}
               />
 
+              <Flex justify="center">
+                <Button
+                  variant="primary"
+                  mt="8"
+                  type="submit"
+                  w="85%"
+                  h="60px"
+                  borderRadius="md"
+                  bg="brand.red"
+                >
+                  UPDATE
+                </Button>
+              </Flex>
               <BottomLayout>
                 <HomeLink />
-
-                <Button w="114px" h="40px" bg="brand.red" type="submit">
-                  Post
-                </Button>
               </BottomLayout>
             </Stack>
           </Flex>

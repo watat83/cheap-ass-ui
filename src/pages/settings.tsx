@@ -126,7 +126,13 @@ const Settings = () => {
                 </Box>
               </Stack>
               <Flex w="full" justify="center">
-                <Button w="85%" h="60px" bg="brand.red" type="submit">
+                <Button
+                  w="85%"
+                  borderRadius="md"
+                  h="60px"
+                  bg="brand.red"
+                  type="submit"
+                >
                   UPDATE
                 </Button>
               </Flex>
@@ -138,17 +144,9 @@ const Settings = () => {
         <HomeLink />
 
         <Link href={ROUTES.CHANGE_PASSWORD}>
-          <Button variant="white">Change Password</Button>
+          <Button variant="link">Change Password</Button>
         </Link>
       </BottomLayout>
-      <Box
-        position="fixed"
-        bottom="0"
-        left="0"
-        width="100%"
-        height="5px"
-        bg="brand.red"
-      />
     </>
   );
 };
