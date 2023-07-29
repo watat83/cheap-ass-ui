@@ -78,12 +78,12 @@ const AfterAuth = () => {
 
         <BottomLayout>
           <Link href={ROUTES.MY_LISTINGS}>
-            <Button size="sm" variant="red_link">
+            <Button size="sm" variant="red">
               EDIT
             </Button>
           </Link>
           <Link href={ROUTES.POST_ADDRESS}>
-            <Button size="sm" variant="red_link">
+            <Button size="sm" variant="red">
               POST
             </Button>
           </Link>

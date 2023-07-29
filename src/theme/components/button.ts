@@ -22,6 +22,13 @@ const variants = {
     textTransform: "uppercase",
     px: "35px",
   },
+  red: {
+    color: "brand.white",
+    bg: "brand.red",
+    fontSize: "16px",
+    textTransform: "uppercase",
+    px: "35px",
+  },
 
   link: {
     color: "white",
