@@ -40,12 +40,12 @@ const MyListing = () => {
 
         <BottomLayout>
           <Link href={ROUTES.MY_LISTINGS}>
-            <Button size="sm" variant="link">
+            <Button size="sm" variant="red_link">
               EDIT
             </Button>
           </Link>
           <Link href={ROUTES.POST_ADDRESS}>
-            <Button size="sm" variant="link">
+            <Button size="sm" variant="red_link">
               POST
             </Button>
           </Link>

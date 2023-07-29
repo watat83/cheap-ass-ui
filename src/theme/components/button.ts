@@ -32,14 +32,16 @@ const variants = {
     _active: {
       color: "white",
     },
-    // color: "brand.dark",
-    // bg: "transparent",
-    // fontSize: "16px",
-    // textTransform: "uppercase",
-    // px: "0px",
-    // _hover: {
-    //   bg: "transparent",
-    // },
+  },
+  red_link: {
+    color: "brand.red",
+    fontSize: "16px",
+    letterSpacing: "1.5px",
+    textTransform: "uppercase",
+    // textDecoration: "underline",
+    _active: {
+      color: "white",
+    },
   },
 };
 
