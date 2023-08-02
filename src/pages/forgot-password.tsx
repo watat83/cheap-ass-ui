@@ -53,7 +53,7 @@ const ForgotPassword = () => {
             initialValues={{
               email: "",
             }}
-            validationSchema={validationSchema}
+            // validationSchema={validationSchema}
             onSubmit={handleSubmit}
           >
             {({ isSubmitting }) => (
@@ -96,7 +96,9 @@ const ForgotPassword = () => {
         <Box position="absolute" bottom="0">
           <Image src="/assets/images/map.png" />
         </Box>
-        <BottomLayout showRedBar transparent><></></BottomLayout>
+        <BottomLayout showRedBar transparent>
+          <></>
+        </BottomLayout>
       </Flex>
     </>
   );

@@ -41,7 +41,7 @@ const ChangePassword = () => {
             newPassword: "",
             confirmPassword: "",
           }}
-          validationSchema={validationSchema}
+          // validationSchema={validationSchema}
           onSubmit={(values) => {
             console.log(values);
           }}

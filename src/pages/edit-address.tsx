@@ -111,7 +111,7 @@ const EditAddress = () => {
           label: tipBaitOptions[0].label,
         },
       }}
-      validationSchema={validationSchema}
+      // validationSchema={validationSchema}
       onSubmit={(values) => {
         console.log(values);
       }}

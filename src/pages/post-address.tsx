@@ -111,7 +111,7 @@ const PostAddress = () => {
           label: tipBaitOptions[0].label,
         },
       }}
-      validationSchema={validationSchema}
+      // validationSchema={validationSchema}
       onSubmit={(values) => {
         console.log(values);
       }}

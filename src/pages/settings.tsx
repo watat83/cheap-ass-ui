@@ -56,7 +56,7 @@ const Settings = () => {
             email: "",
             platforms: [],
           }}
-          validationSchema={settingsValidation}
+          // validationSchema={settingsValidation}
           onSubmit={(values) => {
             console.log(values);
           }}

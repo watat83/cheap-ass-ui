@@ -86,7 +86,7 @@ const Register = () => {
               terms: false,
               platforms: [],
             }}
-            validationSchema={validationSchema}
+            // validationSchema={validationSchema}
             onSubmit={handleSubmit}
           >
             {({ isSubmitting }) => (
