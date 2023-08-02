@@ -66,7 +66,7 @@ const Register = () => {
             src="/assets/images/defaultAvatar.png"
           />
 
-          <Flex direction="column">
+          <Flex direction="column" mb="4">
             <Text textAlign="center" mb={4} textStyle="h2">
               Create a new account
             </Text>
@@ -179,7 +179,7 @@ const Register = () => {
                     />
                   </Box>
                   <Flex w="full" justify="center">
-                    <Box w="80%">
+                    <Box w="85%">
                       <Field name="terms">
                         {({ meta, field }: FieldProps) => (
                           <FormControl
@@ -205,12 +205,13 @@ const Register = () => {
                     </Box>
                   </Flex>
 
-                  <Flex w="full" justify="center" mb="16">
+                  <Flex w="full" justify="center" mb="20" mt="2">
                     <Button
                       type="submit"
                       w="85%"
                       h="60px"
                       bg="brand.red"
+                      borderRadius="md"
                       isLoading={isSubmitting}
                     >
                       REGISTER

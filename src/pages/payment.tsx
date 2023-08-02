@@ -32,16 +32,7 @@ const Payment = () => {
         "See Notes from Other Members",
       ],
     },
-    // {
-    //   id: 1,
-    //   name: "Basic",
-    //   price: "$9.99",
-    //   endText: "3Months",
-    //   features: [
-    //     "Allowed you to post addresses",
-    //     "Allow to edit and see notes",
-    //   ],
-    // },
+
     {
       id: 1,
       name: "Basic",
@@ -117,7 +108,7 @@ const Payment = () => {
         </VStack>
 
         <Flex mt={6} w="full" justify="center">
-          <Button w="70%" h="60px" bg="brand.red">
+          <Button w="70%" h="60px" bg="brand.red" borderRadius="md">
             PAY NOW
           </Button>
         </Flex>

@@ -37,7 +37,7 @@ const Membership = () => {
           </Text>
 
           <Text textStyle="p" my="4">
-            My Current plan is $3.99 per monthly.
+            My Current plan is $4.99 per monthly.
           </Text>
 
           <Box w="full" px="4">
@@ -51,13 +51,13 @@ const Membership = () => {
               <Stack>
                 <Box>
                   <Text as="span" textStyle="h1">
-                    $3.99
+                    $4.99
                   </Text>
                   <Text as="span" textStyle="h1">
                     /
                   </Text>
                   <Text as="span" textStyle="p1" fontSize="lg">
-                    Monthly
+                    Month
                   </Text>
                 </Box>
               </Stack>
@@ -82,7 +82,7 @@ const Membership = () => {
 
           <Link href={ROUTES.CANCEL_SUBSCRIPTION}>
             <Button size="sm" variant="link">
-              Cancel Subscription?
+              Unsubscribe
             </Button>
           </Link>
         </BottomLayout>
