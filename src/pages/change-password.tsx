@@ -41,7 +41,7 @@ const ChangePassword = () => {
             newPassword: "",
             confirmPassword: "",
           }}
-          validationSchema={validationSchema}
+          // validationSchema={validationSchema}
           onSubmit={(values) => {
             console.log(values);
           }}
@@ -88,7 +88,13 @@ const ChangePassword = () => {
                 />
               </Stack>
               <Flex w="full" justify="center">
-                <Button w="85%" h="60px" bg="brand.red" type="submit">
+                <Button
+                  w="85%"
+                  h="60px"
+                  bg="brand.red"
+                  borderRadius="md"
+                  type="submit"
+                >
                   UPDATE PASSWORD
                 </Button>
               </Flex>

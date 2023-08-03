@@ -9,6 +9,7 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  Spacer,
   Stack,
   Text,
 } from "@chakra-ui/react";
@@ -102,7 +103,7 @@ const PostAddress = () => {
           label: platforms[0].label,
         },
         date: "",
-        tip: "N/A",
+        tip: "",
         endTip: "",
         note: "",
         tipBaitsOther: "",
@@ -111,7 +112,7 @@ const PostAddress = () => {
           label: tipBaitOptions[0].label,
         },
       }}
-      validationSchema={validationSchema}
+      // validationSchema={validationSchema}
       onSubmit={(values) => {
         console.log(values);
       }}
@@ -125,7 +126,7 @@ const PostAddress = () => {
                 <Field name="date">
                   {({ field, meta }: FieldProps) => (
                     <FormControl
-                      w="60%"
+                      flex="1"
                       isInvalid={!!(meta.error && meta.touched)}
                     >
                       <InputGroup position="relative">
@@ -150,6 +151,7 @@ const PostAddress = () => {
                     </FormControl>
                   )}
                 </Field>
+                <Box flex="1" />
               </HStack>
               <HStack alignItems="start">
                 <FormInputWrappper

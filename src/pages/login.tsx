@@ -63,7 +63,7 @@ const Login = () => {
 
           <Formik
             initialValues={initialValues}
-            validationSchema={validationSchema}
+            // validationSchema={validationSchema}
             onSubmit={handleSubmit}
           >
             {({ isSubmitting }) => (
@@ -124,9 +124,6 @@ const Login = () => {
                       </Text>
                     </Link>
                   </Text>
-                  <Link href={ROUTES.HOME} textAlign="center">
-                    Continue as Guest
-                  </Link>
                 </Stack>
               </Form>
             )}
@@ -137,7 +134,7 @@ const Login = () => {
           <Image src="/assets/images/map.png" />
         </Box>
         <BottomLayout showRedBar transparent>
-          <HomeLink />
+          <></>
         </BottomLayout>
       </Flex>
     </>

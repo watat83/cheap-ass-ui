@@ -34,6 +34,7 @@ const BeforeAuth = () => {
                 w="240px"
                 h="60px"
                 bg="brand.red"
+                borderRadius="md"
               >
                 LOG IN
               </Button>
@@ -45,6 +46,7 @@ const BeforeAuth = () => {
                 w="240px"
                 h="60px"
                 bg="brand.dark"
+                borderRadius="md"
               >
                 REGISTER NOW
               </Button>
