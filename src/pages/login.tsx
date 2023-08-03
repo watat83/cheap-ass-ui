@@ -40,7 +40,7 @@ const Login = () => {
     <>
       <Navbar bg="none" pageName="" toggleRightCollapse={toggleSidebar} />
       <Flex direction="column" justify="space-between">
-        <Stack spacing={0} px={4}>
+        <Stack spacing={0} px={4} pos="relative" zIndex="1">
           <VStack>
             <Image
               height="150px"
@@ -135,7 +135,7 @@ const Login = () => {
           </Formik>
         </Stack>
 
-        <Box position="absolute" bottom="0">
+        <Box position="absolute" bottom="0" zIndex="0">
           <Image src="/assets/images/map.png" />
         </Box>
         <BottomLayout showRedBar transparent>
