@@ -19,6 +19,8 @@ import FormCheckbox from "@/components/FormCheckbox/FormCheckbox";
 import { platforms } from "@/constant";
 import BottomLayout from "@/components/Layout/BottomLayout";
 import HomeLink from "@/components/HomeLink";
+import { ROUTES } from "@/routes";
+import { Link } from "@chakra-ui/next-js";
 
 const validationSchema = Yup.object({
   firstName: Yup.string()
@@ -59,7 +61,7 @@ const Register = () => {
     <>
       <Navbar bg="none" pageName="" toggleRightCollapse={toggleSidebar} />
       <Flex direction="column" justify="space-between" mb="8">
-        <VStack px={4}>
+        <VStack px={4} spacing={0} pos="relative" zIndex="1">
           <Image
             height="90px"
             width="90px"
@@ -91,7 +93,7 @@ const Register = () => {
           >
             {({ isSubmitting }) => (
               <Form>
-                <Stack>
+                <Stack mb="20">
                   <Stack spacing={4}>
                     <FormInputWrappper
                       type="input"
@@ -205,7 +207,7 @@ const Register = () => {
                     </Box>
                   </Flex>
 
-                  <Flex w="full" justify="center" mb="20" mt="2">
+                  <Flex w="full" justify="center" mt="2">
                     <Button
                       type="submit"
                       w="85%"
@@ -217,27 +219,33 @@ const Register = () => {
                       REGISTER
                     </Button>
                   </Flex>
+
+                  <Flex gap="1" mt="2" justify="center">
+                    <Text textAlign="center" textStyle="p" fontWeight="normal">
+                      Have an account?
+                    </Text>
+                    <Link
+                      textAlign="center"
+                      textStyle="p"
+                      fontWeight="normal"
+                      color="brand.red"
+                      href={ROUTES.LOGIN}
+                    >
+                      Login
+                    </Link>
+                  </Flex>
                 </Stack>
               </Form>
             )}
           </Formik>
         </VStack>
+        <Box position="absolute" bottom="0" zIndex="0">
+          <Image src="/assets/images/map.png" />
+        </Box>
+        <BottomLayout showRedBar transparent>
+          <></>
+        </BottomLayout>
       </Flex>
-
-      <BottomLayout showRedBar>
-        <HomeLink />
-
-        <Text textAlign="center" textStyle="p" fontWeight="normal">
-          Have an account?{" "}
-          <Text
-            onClick={() => router.push("/login")}
-            as="span"
-            color="brand.red"
-          >
-            Login
-          </Text>
-        </Text>
-      </BottomLayout>
     </>
   );
 };
