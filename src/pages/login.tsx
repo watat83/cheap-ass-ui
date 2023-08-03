@@ -15,7 +15,6 @@ import { useRouter } from "next/router";
 import FormInputWrappper from "@/components/FormInputWrapper/FormInputWrapper";
 import { ROUTES } from "@/routes";
 import { Link } from "@chakra-ui/next-js";
-import HomeLink from "@/components/HomeLink";
 import BottomLayout from "@/components/Layout/BottomLayout";
 
 const validationSchema = Yup.object({
@@ -118,10 +117,8 @@ const Login = () => {
 
                   <Text textAlign="center" textStyle="p" fontWeight="normal">
                     Don't have an account?{" "}
-                    <Link href={ROUTES.REGISTER}>
-                      <Text as="span" color="brand.red">
-                        Register Now
-                      </Text>
+                    <Link color="brand.red" href={ROUTES.REGISTER}>
+                      Register Now
                     </Link>
                   </Text>
                 </Stack>
