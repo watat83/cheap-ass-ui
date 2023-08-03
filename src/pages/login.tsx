@@ -115,12 +115,20 @@ const Login = () => {
                     </Button>
                   </Flex>
 
-                  <Text textAlign="center" textStyle="p" fontWeight="normal">
-                    Don't have an account?{" "}
-                    <Link color="brand.red" href={ROUTES.REGISTER}>
+                  <Flex gap="1" justify="center">
+                    <Text textAlign="center" textStyle="p" fontWeight="normal">
+                      Don't have an account?{" "}
+                    </Text>
+                    <Link
+                      textAlign="center"
+                      textStyle="p"
+                      fontWeight="normal"
+                      color="brand.red"
+                      href={ROUTES.REGISTER}
+                    >
                       Register Now
                     </Link>
-                  </Text>
+                  </Flex>
                 </Stack>
               </Form>
             )}
