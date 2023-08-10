@@ -71,21 +71,17 @@ const validationSchema = object({
 
   date: string().required("Please select a date"),
   endTip: number().when("tipBait", ([tipBait], schema) => {
-    if (
-      tipBait.value === tipBaitOptions[0].value ||
-      tipBait.value === tipBaitOptions[1].value
-    ) {
+    if (tipBait.value === tipBaitOptions[2].value) {
       return number().required("Please enter an end tip");
     }
     return schema;
   }),
   tip: string().when("tipBait", ([tipBait], schema) => {
     if (
-      tipBait.value === tipBaitOptions[0].value ||
       tipBait.value === tipBaitOptions[1].value ||
       tipBait.value === tipBaitOptions[2].value
     ) {
-      return string().required("Please enter an end tip");
+      return string().required("Please enter a tip");
     }
     return schema;
   }),
@@ -112,7 +108,7 @@ const EditAddress = () => {
           label: tipBaitOptions[0].label,
         },
       }}
-      // validationSchema={validationSchema}
+      validationSchema={validationSchema}
       onSubmit={(values) => {
         console.log(values);
       }}
@@ -185,6 +181,7 @@ const EditAddress = () => {
                       <FormControl isInvalid={!!(meta.error && meta.touched)}>
                         <Select
                           id="platform"
+                          isSearchable={false}
                           placeholder="Platform"
                           options={platforms}
                           styles={styles}
@@ -212,6 +209,7 @@ const EditAddress = () => {
                       <FormControl isInvalid={!!(meta.error && meta.touched)}>
                         <Select
                           id="tipBait"
+                          isSearchable={false}
                           placeholder="Tip Bait"
                           options={tipBaitOptions}
                           styles={styles}
@@ -242,7 +240,6 @@ const EditAddress = () => {
                     name="tip"
                     isDisabled={
                       !(
-                        values.tipBait.value === tipBaitOptions[0].value ||
                         values.tipBait.value === tipBaitOptions[1].value ||
                         values.tipBait.value === tipBaitOptions[2].value
                       )
@@ -261,10 +258,7 @@ const EditAddress = () => {
                     type="input"
                     name="endTip"
                     isDisabled={
-                      !(
-                        values.tipBait.value === tipBaitOptions[0].value ||
-                        values.tipBait.value === tipBaitOptions[1].value
-                      )
+                      !(values.tipBait.value === tipBaitOptions[2].value)
                     }
                     leftElement={"$"}
                   />
