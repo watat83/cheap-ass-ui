@@ -71,21 +71,17 @@ const validationSchema = object({
 
   date: string().required("Please select a date"),
   endTip: number().when("tipBait", ([tipBait], schema) => {
-    if (
-      tipBait.value === tipBaitOptions[0].value ||
-      tipBait.value === tipBaitOptions[1].value
-    ) {
+    if (tipBait.value === tipBaitOptions[2].value) {
       return number().required("Please enter an end tip");
     }
     return schema;
   }),
   tip: string().when("tipBait", ([tipBait], schema) => {
     if (
-      tipBait.value === tipBaitOptions[0].value ||
       tipBait.value === tipBaitOptions[1].value ||
       tipBait.value === tipBaitOptions[2].value
     ) {
-      return string().required("Please enter an end tip");
+      return string().required("Please enter a tip");
     }
     return schema;
   }),
@@ -244,7 +240,6 @@ const PostAddress = () => {
                     name="tip"
                     isDisabled={
                       !(
-                        values.tipBait.value === tipBaitOptions[0].value ||
                         values.tipBait.value === tipBaitOptions[1].value ||
                         values.tipBait.value === tipBaitOptions[2].value
                       )
@@ -263,10 +258,7 @@ const PostAddress = () => {
                     type="input"
                     name="endTip"
                     isDisabled={
-                      !(
-                        values.tipBait.value === tipBaitOptions[0].value ||
-                        values.tipBait.value === tipBaitOptions[1].value
-                      )
+                      !(values.tipBait.value === tipBaitOptions[2].value)
                     }
                     leftElement={"$"}
                   />
