@@ -112,7 +112,7 @@ const PostAddress = () => {
           label: tipBaitOptions[0].label,
         },
       }}
-      // validationSchema={validationSchema}
+      validationSchema={validationSchema}
       onSubmit={(values) => {
         console.log(values);
       }}
@@ -185,6 +185,7 @@ const PostAddress = () => {
                       <FormControl isInvalid={!!(meta.error && meta.touched)}>
                         <Select
                           id="platform"
+                          isSearchable={false}
                           placeholder="Platform"
                           options={platforms}
                           styles={styles}
@@ -212,6 +213,7 @@ const PostAddress = () => {
                       <FormControl isInvalid={!!(meta.error && meta.touched)}>
                         <Select
                           id="tipBait"
+                          isSearchable={false}
                           placeholder="Tip Bait"
                           options={tipBaitOptions}
                           styles={styles}
